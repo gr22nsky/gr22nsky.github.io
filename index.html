@@ -2,12 +2,676 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Derrick2Sky</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Derrick2Sky developer page" />
+  <meta name="color-scheme" content="light" />
+  <link rel="icon" type="image/png" href="./assets/profile/icon.png" />
+  <title>Derrick2Sky | Developer Page</title>
+  <style>
+    :root {
+      --bg: #f6f7f8;
+      --surface: rgba(255, 255, 255, 0.78);
+      --surface-strong: #ffffff;
+      --text: #17181c;
+      --muted: #63656d;
+      --line: rgba(23, 24, 28, 0.10);
+      --accent: #ff6da8;
+      --accent-soft: rgba(255, 109, 168, 0.12);
+      --shadow: 0 24px 60px rgba(23, 24, 28, 0.10);
+      --max: 1160px;
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255, 208, 224, 0.75), transparent 24%),
+        linear-gradient(180deg, #fffafb 0%, #f7f8fb 56%, #ffffff 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    svg {
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .shell {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 0 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow: 0 10px 24px rgba(255, 109, 168, 0.20);
+    }
+
+    .brand strong,
+    .brand span {
+      display: block;
+      line-height: 1.2;
+    }
+
+    .brand span,
+    .topbar .contact {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 700px;
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(120deg, rgba(19, 20, 24, 0.78), rgba(19, 20, 24, 0.28)),
+        url("./assets/profile/header.jpg") center 38% / cover no-repeat;
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 200px;
+      background: linear-gradient(180deg, rgba(19, 20, 24, 0), rgba(19, 20, 24, 0.24));
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+      gap: 24px;
+      min-height: 700px;
+      padding: 28px;
+      align-items: end;
+    }
+
+    .hero-copy {
+      max-width: 620px;
+      color: #ffffff;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(12px);
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .eyebrow svg,
+    .card-head svg,
+    .project-meta svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    h1 {
+      margin: 18px 0 0;
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      margin: 18px 0 0;
+      max-width: 560px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      font-size: 0.94rem;
+      font-weight: 600;
+    }
+
+    .button-primary {
+      color: #ffffff;
+      background: linear-gradient(135deg, #ff77ae 0%, #ca8bff 100%);
+      box-shadow: 0 18px 30px rgba(255, 109, 168, 0.28);
+    }
+
+    .button-secondary {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 14px;
+      width: min(100%, 360px);
+      justify-self: end;
+    }
+
+    .glass-card {
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(16px);
+    }
+
+    .glass-card strong,
+    .glass-card span {
+      display: block;
+    }
+
+    .glass-card span {
+      margin-top: 6px;
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .content {
+      display: grid;
+      gap: 24px;
+      margin-top: 24px;
+      padding-bottom: 36px;
+    }
+
+    .stack {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      align-content: start;
+    }
+
+    .card {
+      padding: 26px;
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 40px rgba(23, 24, 28, 0.06);
+      backdrop-filter: blur(14px);
+    }
+
+    .card-head {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .card-head .icon-box {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .card h2 {
+      margin: 14px 0 0;
+      font-size: 2rem;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .card p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .stack .card h2 {
+      font-size: 1.65rem;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .mini-item {
+      padding: 16px 0 0;
+      border-top: 1px solid rgba(23, 24, 28, 0.08);
+    }
+
+    .mini-item strong,
+    .mini-item span {
+      display: block;
+    }
+
+    .mini-item span {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.65;
+    }
+
+    .project {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.75fr);
+      gap: 22px;
+      align-items: center;
+    }
+
+    .project-copy {
+      min-width: 0;
+    }
+
+    .project-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .project-badge img {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      object-fit: cover;
+      box-shadow: 0 12px 26px rgba(255, 109, 168, 0.18);
+    }
+
+    .project-badge strong,
+    .project-badge span {
+      display: block;
+      min-width: 0;
+    }
+
+    .project-badge span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .project-copy h3 {
+      margin: 18px 0 0;
+      font-size: 1.7rem;
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .project-copy p {
+      margin-top: 14px;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .project-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid rgba(23, 24, 28, 0.08);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .project-shot {
+      overflow: hidden;
+      border-radius: 30px;
+      background: #fff7fb;
+      border: 1px solid rgba(255, 255, 255, 0.88);
+      box-shadow: 0 18px 38px rgba(23, 24, 28, 0.08);
+    }
+
+    .project-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 0 42px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .stack,
+      .project {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-grid {
+        min-height: auto;
+      }
+
+      .hero-side {
+        width: 100%;
+        justify-self: stretch;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        width: min(calc(100% - 20px), var(--max));
+      }
+
+      .topbar,
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-grid {
+        padding: 18px;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 12vw, 4.1rem);
+      }
+
+      .card,
+      .glass-card {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
-<body style="font-family: system-ui; padding: 24px; line-height: 1.6;">
-  <h1>Derrick2Sky (데릭투스카이)</h1>
-  <p>Derrick2Sky 개발자 웹사이트입니다.</p>
-  <p>문의: <a href="mailto:derrick2sky@gmail.com">derrick2sky@gmail.com</a></p>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="#top" id="top" aria-label="Derrick2Sky home">
+        <img src="./assets/profile/icon.png" alt="Derrick2Sky profile icon" />
+        <span>
+          <strong>Derrick2Sky</strong>
+          <span>Developer Page</span>
+        </span>
+      </a>
+      <span class="contact">derrick2sky@gmail.com</span>
+    </header>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3l2.2 4.8L19 10l-3.8 3.7.8 5.3L12 16.8 8 19l.8-5.3L5 10l4.8-2.2L12 3z"></path>
+            </svg>
+            Developer focused
+          </span>
+          <h1 id="hero-title">Building usable<br />digital products</h1>
+          <p class="lead">
+            Hi, I’m Derrick2Sky. I build products where interface, interaction, and implementation stay aligned.
+            I care about screens that do more than look finished: they should respond clearly, persist state cleanly,
+            and hold up when they move closer to release.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="mailto:derrick2sky@gmail.com">Contact</a>
+            <a class="button button-secondary" href="#apps">Apps</a>
+          </div>
+        </div>
+
+        <aside class="hero-side" aria-label="Developer summary">
+          <div class="glass-card">
+            <strong>Build</strong>
+            <span>I work on functional screens and the real user flows behind them.</span>
+          </div>
+          <div class="glass-card">
+            <strong>Refine</strong>
+            <span>I prefer structure that removes noise and leaves the essential signal.</span>
+          </div>
+          <div class="glass-card">
+            <strong>Ship</strong>
+            <span>I like small projects that are still finished with release-minded discipline.</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <main class="content">
+      <div class="stack">
+        <section class="card" aria-labelledby="about-title">
+          <div class="card-head">
+            <span class="icon-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4z"></path>
+                <path d="M5 20a7 7 0 0 1 14 0"></path>
+              </svg>
+            </span>
+            About
+          </div>
+          <h2 id="about-title">What I work on</h2>
+          <p>
+            I mainly work on mobile apps, interaction-heavy interfaces, and screens with meaningful state changes.
+            I tend to focus less on static presentation and more on production-shaped flows: settings, persistence,
+            media handling, and the polish required before shipping.
+          </p>
+          <p>
+            Even in personal projects, I try to make the product feel complete.
+            That means thinking about first impression, response after input, recoverability, and operational details together.
+          </p>
+        </section>
+
+        <section class="card" aria-labelledby="work-title">
+          <div class="card-head">
+            <span class="icon-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 7h16"></path>
+                <path d="M4 12h16"></path>
+                <path d="M4 17h10"></path>
+              </svg>
+            </span>
+            Approach
+          </div>
+          <h2 id="work-title">How I build</h2>
+          <div class="mini-list">
+            <div class="mini-item">
+              <strong>Flow before fragments</strong>
+              <span>I look at the full path first: enter, change, save, return, and verify.</span>
+            </div>
+            <div class="mini-item">
+              <strong>Separation that survives change</strong>
+              <span>I split state, screens, widgets, and settings logic so the shape still holds as features accumulate.</span>
+            </div>
+            <div class="mini-item">
+              <strong>Release-minded scope</strong>
+              <span>I include practical surfaces early: assets, billing, ads, settings, restore flows, and the edges around them.</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="focus-title">
+          <div class="card-head">
+            <span class="icon-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 12h16"></path>
+                <path d="M12 4v16"></path>
+              </svg>
+            </span>
+            Focus
+          </div>
+          <h2 id="focus-title">What matters to me</h2>
+          <div class="mini-list">
+            <div class="mini-item">
+              <strong>Clarity</strong>
+              <span>The first screen should explain what the product does and where the user should act.</span>
+            </div>
+            <div class="mini-item">
+              <strong>Interaction</strong>
+              <span>I prefer interactions where selection, preview, editing, and result stay connected.</span>
+            </div>
+            <div class="mini-item">
+              <strong>Implementation</strong>
+              <span>I care about the real implementation layer, not just the surface: persistence, media, permissions, and monetization.</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="card" id="apps" aria-labelledby="apps-title">
+        <div class="card-head">
+          <span class="icon-box">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="4" width="7" height="7" rx="1.5"></rect>
+              <rect x="14" y="4" width="7" height="7" rx="1.5"></rect>
+              <rect x="3" y="13" width="7" height="7" rx="1.5"></rect>
+              <rect x="14" y="13" width="7" height="7" rx="1.5"></rect>
+            </svg>
+          </span>
+          Apps
+        </div>
+        <h2 id="apps-title">Current app work</h2>
+        <p>
+          This section is meant to grow over time. Right now it highlights one app, but the layout is intended
+          to expand as more shipped or in-progress apps are added.
+        </p>
+
+        <div class="project">
+          <div class="project-copy">
+            <div class="project-badge">
+              <img src="./assets/keycap-keyring/app_icon.png" alt="KeyCap KeyRing app icon" />
+              <span>
+                <strong>KeyCap KeyRing</strong>
+                <span>Flutter · Android · iOS</span>
+              </span>
+            </div>
+
+            <h3>A customization app for building miniature keycap keyring combinations</h3>
+            <p>
+              KeyCap KeyRing is an Android app for composing miniature keycap keyring setups directly on screen.
+              It is designed so layout, switch, keycap, and photo choices update the result immediately,
+              with the visual style integrated into the actual selection flow rather than treated as decoration.
+            </p>
+            <p>
+              The app is built with Flutter, with theme setup at the MaterialApp entry point and responsibilities
+              split across AppShell, screen-level composition, and widget-level controls. It also includes practical
+              mobile surfaces such as image picking, recording, playback, audio trimming, in-app purchase, and ads.
+            </p>
+
+            <div class="project-meta" aria-label="Project metadata">
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 12h16"></path>
+                  <path d="M8 8l-4 4 4 4"></path>
+                  <path d="M16 8l4 4-4 4"></path>
+                </svg>
+                Layout + Switch + Keycap
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 7h16v10H4z"></path>
+                  <path d="M8 11l2.5 3 2.5-2 3 4"></path>
+                </svg>
+                Photo Custom
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 6v6l4 2"></path>
+                  <circle cx="12" cy="12" r="9"></circle>
+                </svg>
+                Local First
+              </span>
+            </div>
+
+            <div class="mini-list">
+              <div class="mini-item">
+                <strong>UI Layer</strong>
+                <span>The UI is split across preview-first main, customization, and settings screens, with selection controls separated into focused widgets.</span>
+              </div>
+              <div class="mini-item">
+                <strong>Media Handling</strong>
+                <span>image_picker, record, audioplayers, and ffmpeg are used to support photo keycaps and switch-sound editing flows.</span>
+              </div>
+              <div class="mini-item">
+                <strong>Product Surface</strong>
+                <span>in_app_purchase, google_mobile_ads, settings, and restore flows are included so the app can move toward a release-ready shape.</span>
+              </div>
+            </div>
+          </div>
+
+          <figure class="project-shot">
+            <img src="./assets/keycap-keyring/phone-keycap.png" alt="KeyCap KeyRing app screen" />
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Derrick2Sky Developer Page</span>
+      <span>derrick2sky@gmail.com</span>
+    </footer>
+  </div>
 </body>
 </html>
