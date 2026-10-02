@@ -3,58 +3,44 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Derrick2Sky developer page" />
+  <meta name="description" content="Derrick2Sky — independent software studio building focused mobile products." />
   <meta name="color-scheme" content="light" />
   <link rel="icon" type="image/png" href="./assets/profile/icon.png" />
-  <title>Derrick2Sky | Developer Page</title>
+  <title>Derrick2Sky | Software Studio</title>
   <style>
     :root {
-      --bg: #f6f7f8;
-      --surface: rgba(255, 255, 255, 0.78);
+      --bg: #f6f7fb;
+      --surface: rgba(255, 255, 255, 0.86);
       --surface-strong: #ffffff;
-      --text: #17181c;
-      --muted: #63656d;
-      --line: rgba(23, 24, 28, 0.10);
-      --accent: #ff6da8;
-      --accent-soft: rgba(255, 109, 168, 0.12);
-      --shadow: 0 24px 60px rgba(23, 24, 28, 0.10);
+      --text: #16181d;
+      --muted: #6c707a;
+      --line: rgba(22, 24, 29, 0.09);
+      --accent: #ff6fa8;
+      --accent-2: #8f82ff;
+      --accent-soft: rgba(255, 111, 168, 0.11);
+      --shadow: 0 24px 70px rgba(27, 30, 40, 0.11);
+      --shadow-soft: 0 16px 40px rgba(27, 30, 40, 0.07);
       --max: 1160px;
-      --radius-xl: 34px;
-      --radius-lg: 24px;
-      --radius-md: 18px;
+      --radius-xl: 36px;
+      --radius-lg: 26px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       font-family: "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(255, 208, 224, 0.75), transparent 24%),
-        linear-gradient(180deg, #fffafb 0%, #f7f8fb 56%, #ffffff 100%);
+        radial-gradient(circle at 12% 0%, rgba(255, 202, 224, 0.5), transparent 24%),
+        radial-gradient(circle at 88% 9%, rgba(182, 174, 255, 0.32), transparent 22%),
+        linear-gradient(180deg, #fffafd 0%, #f6f7fb 42%, #ffffff 100%);
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    svg {
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
+    button, a { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
 
     .shell {
       width: min(calc(100% - 32px), var(--max));
@@ -65,7 +51,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 18px;
       padding: 22px 0 18px;
     }
 
@@ -77,59 +63,107 @@
     }
 
     .brand img {
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: 14px;
       object-fit: cover;
-      box-shadow: 0 10px 24px rgba(255, 109, 168, 0.20);
+      box-shadow: 0 10px 26px rgba(255, 111, 168, 0.2);
     }
 
     .brand strong,
+    .brand span { display: block; line-height: 1.2; }
+
     .brand span {
-      display: block;
-      line-height: 1.2;
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: 2px;
     }
 
-    .brand span,
-    .topbar .contact {
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .contact {
       color: var(--muted);
       font-size: 0.92rem;
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      gap: 4px;
+      padding: 4px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.8);
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 24px rgba(20,22,28,0.05);
+    }
+
+    .lang-toggle button {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      min-width: 42px;
+      height: 34px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.82rem;
+    }
+
+    .lang-toggle button.active {
+      color: #fff;
+      background: #1c1e24;
     }
 
     .hero {
       position: relative;
       overflow: hidden;
-      min-height: 700px;
       border-radius: var(--radius-xl);
+      min-height: 610px;
       background:
-        linear-gradient(120deg, rgba(19, 20, 24, 0.78), rgba(19, 20, 24, 0.28)),
-        url("./assets/profile/header.jpg") center 38% / cover no-repeat;
+        radial-gradient(circle at 80% 18%, rgba(255,255,255,0.18), transparent 22%),
+        linear-gradient(135deg, #171920 0%, #24232f 48%, #3f3147 100%);
       box-shadow: var(--shadow);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 440px;
+      height: 440px;
+      border-radius: 50%;
+      right: -110px;
+      top: -120px;
+      background: linear-gradient(135deg, rgba(255,111,168,0.68), rgba(143,130,255,0.55));
+      opacity: 0.58;
     }
 
     .hero::after {
       content: "";
       position: absolute;
-      inset: auto 0 0;
-      height: 200px;
-      background: linear-gradient(180deg, rgba(19, 20, 24, 0), rgba(19, 20, 24, 0.24));
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.75), transparent 92%);
+      pointer-events: none;
     }
 
     .hero-grid {
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
-      gap: 24px;
-      min-height: 700px;
-      padding: 28px;
-      align-items: end;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .8fr);
+      gap: 34px;
+      align-items: center;
+      min-height: 610px;
+      padding: 54px;
     }
 
-    .hero-copy {
-      max-width: 620px;
-      color: #ffffff;
-    }
+    .hero-copy { color: #fff; max-width: 650px; }
 
     .eyebrow {
       display: inline-flex;
@@ -138,36 +172,34 @@
       min-height: 38px;
       padding: 0 14px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      backdrop-filter: blur(12px);
-      font-size: 0.92rem;
-      color: rgba(255, 255, 255, 0.88);
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.84);
+      font-size: .9rem;
+      backdrop-filter: blur(10px);
     }
 
-    .eyebrow svg,
-    .card-head svg,
-    .project-meta svg {
-      width: 18px;
-      height: 18px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 2;
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff74ab, #a58cff);
+      box-shadow: 0 0 16px rgba(255,116,171,.8);
     }
 
     h1 {
-      margin: 18px 0 0;
-      font-size: clamp(3rem, 7vw, 5.8rem);
-      line-height: 0.98;
-      letter-spacing: 0;
+      margin: 22px 0 0;
+      font-size: clamp(3rem, 6.5vw, 5.4rem);
+      line-height: .98;
+      letter-spacing: -0.045em;
     }
 
     .lead {
-      margin: 18px 0 0;
-      max-width: 560px;
-      color: rgba(255, 255, 255, 0.82);
+      margin: 22px 0 0;
+      max-width: 610px;
+      color: rgba(255,255,255,.76);
       font-size: 1.08rem;
-      line-height: 1.75;
+      line-height: 1.8;
     }
 
     .hero-actions {
@@ -184,267 +216,515 @@
       min-height: 46px;
       padding: 0 18px;
       border-radius: 999px;
-      font-size: 0.94rem;
-      font-weight: 600;
+      font-size: .93rem;
+      font-weight: 700;
+      transition: transform .18s ease, box-shadow .18s ease;
     }
 
+    .button:hover { transform: translateY(-2px); }
     .button-primary {
-      color: #ffffff;
-      background: linear-gradient(135deg, #ff77ae 0%, #ca8bff 100%);
-      box-shadow: 0 18px 30px rgba(255, 109, 168, 0.28);
+      color: #fff;
+      background: linear-gradient(135deg, #ff74aa, #9b86ff);
+      box-shadow: 0 16px 34px rgba(255,111,168,.22);
     }
-
     .button-secondary {
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.10);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      backdrop-filter: blur(12px);
+      color: #fff;
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.15);
+      backdrop-filter: blur(10px);
     }
 
-    .hero-side {
+    .dev-panel {
+      position: relative;
+      padding: 22px;
+      border-radius: 28px;
+      background: rgba(10,11,16,.52);
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 28px 60px rgba(0,0,0,.22);
+      backdrop-filter: blur(15px);
+    }
+
+    .dev-window {
+      overflow: hidden;
+      border-radius: 20px;
+      background: #101217;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .window-top {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      height: 38px;
+      padding: 0 14px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .window-top i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.26);
+    }
+
+    .dev-body {
       display: grid;
-      gap: 14px;
-      width: min(100%, 360px);
-      justify-self: end;
+      grid-template-columns: 70px 1fr;
+      gap: 18px;
+      padding: 22px;
+      align-items: center;
     }
 
-    .glass-card {
-      padding: 18px;
-      border-radius: var(--radius-lg);
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      backdrop-filter: blur(16px);
+    .dev-body img {
+      width: 70px;
+      height: 70px;
+      border-radius: 22px;
+      object-fit: cover;
+      box-shadow: 0 16px 28px rgba(255,111,168,.2);
     }
 
-    .glass-card strong,
-    .glass-card span {
-      display: block;
+    .code-lines {
+      display: grid;
+      gap: 10px;
     }
 
-    .glass-card span {
-      margin-top: 6px;
-      color: rgba(255, 255, 255, 0.74);
-      font-size: 0.92rem;
-      line-height: 1.6;
+    .code-line {
+      height: 9px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
     }
 
-    .content {
+    .code-line:nth-child(1) { width: 75%; background: linear-gradient(90deg, rgba(255,111,168,.65), rgba(255,255,255,.12)); }
+    .code-line:nth-child(2) { width: 92%; }
+    .code-line:nth-child(3) { width: 58%; background: linear-gradient(90deg, rgba(143,130,255,.7), rgba(255,255,255,.12)); }
+    .code-line:nth-child(4) { width: 82%; }
+    .code-line:nth-child(5) { width: 48%; }
+
+    .dev-labels {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .dev-labels span {
+      padding: 10px 8px;
+      border-radius: 13px;
+      text-align: center;
+      color: rgba(255,255,255,.72);
+      background: rgba(255,255,255,.06);
+      font-size: .78rem;
+      border: 1px solid rgba(255,255,255,.07);
+    }
+
+    main {
       display: grid;
       gap: 24px;
       margin-top: 24px;
       padding-bottom: 36px;
     }
 
-    .stack {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
-      align-content: start;
-    }
-
-    .card {
-      padding: 26px;
+    .section-card {
+      padding: 30px;
       border-radius: var(--radius-lg);
       background: var(--surface);
       border: 1px solid var(--line);
-      box-shadow: 0 16px 40px rgba(23, 24, 28, 0.06);
+      box-shadow: var(--shadow-soft);
       backdrop-filter: blur(14px);
     }
 
-    .card-head {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.98rem;
-      font-weight: 700;
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 24px;
     }
 
-    .card-head .icon-box {
-      display: grid;
-      place-items: center;
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: var(--accent-soft);
+    .kicker {
+      display: inline-block;
       color: var(--accent);
+      font-size: .8rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
     }
 
-    .card h2 {
-      margin: 14px 0 0;
-      font-size: 2rem;
+    h2 {
+      margin: 8px 0 0;
+      font-size: clamp(2rem, 3.7vw, 3rem);
       line-height: 1.08;
-      letter-spacing: 0;
+      letter-spacing: -.035em;
     }
 
-    .card p {
+    .section-sub {
+      margin: 10px 0 0;
+      max-width: 720px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .company-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .company-copy,
+    .business-card {
+      padding: 24px;
+      border-radius: 22px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .company-copy h3,
+    .business-card h3 {
+      margin: 0;
+      font-size: 1.18rem;
+    }
+
+    .company-copy p {
       margin: 14px 0 0;
       color: var(--muted);
       line-height: 1.75;
     }
 
-    .stack .card h2 {
-      font-size: 1.65rem;
-    }
-
-    .mini-list {
+    .business-list {
       display: grid;
-      gap: 12px;
-      margin-top: 18px;
+      gap: 0;
+      margin: 16px 0 0;
     }
 
-    .mini-item {
-      padding: 16px 0 0;
-      border-top: 1px solid rgba(23, 24, 28, 0.08);
-    }
-
-    .mini-item strong,
-    .mini-item span {
-      display: block;
-    }
-
-    .mini-item span {
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 0.94rem;
-      line-height: 1.65;
-    }
-
-    .project {
+    .business-row {
       display: grid;
-      grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.75fr);
-      gap: 22px;
-      align-items: center;
-    }
-
-    .project-copy {
-      min-width: 0;
-    }
-
-    .project-badge {
-      display: inline-flex;
-      align-items: center;
+      grid-template-columns: 110px 1fr;
       gap: 12px;
-      min-width: 0;
+      padding: 12px 0;
+      border-top: 1px solid var(--line);
+      font-size: .93rem;
     }
 
-    .project-badge img {
-      width: 56px;
-      height: 56px;
-      border-radius: 18px;
-      object-fit: cover;
-      box-shadow: 0 12px 26px rgba(255, 109, 168, 0.18);
+    .business-row span:first-child { color: var(--muted); }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 24px;
     }
 
-    .project-badge strong,
-    .project-badge span {
-      display: block;
-      min-width: 0;
-    }
-
-    .project-badge span {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .project-copy h3 {
-      margin: 18px 0 0;
-      font-size: 1.7rem;
-      line-height: 1.12;
-      letter-spacing: 0;
-    }
-
-    .project-copy p {
-      margin-top: 14px;
-    }
-
-    .project-meta {
+    .app-card {
+      position: relative;
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .project-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      min-height: 38px;
-      padding: 0 14px;
-      border-radius: 999px;
-      background: #ffffff;
-      border: 1px solid rgba(23, 24, 28, 0.08);
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .project-shot {
+      flex-direction: column;
+      min-height: 430px;
+      width: 100%;
+      padding: 0;
       overflow: hidden;
-      border-radius: 30px;
-      background: #fff7fb;
-      border: 1px solid rgba(255, 255, 255, 0.88);
-      box-shadow: 0 18px 38px rgba(23, 24, 28, 0.08);
+      text-align: left;
+      color: inherit;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      cursor: pointer;
+      box-shadow: 0 12px 32px rgba(24,26,33,.05);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     }
 
-    .project-shot img {
+    .app-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 45px rgba(24,26,33,.1);
+      border-color: rgba(255,111,168,.2);
+    }
+
+    .app-visual {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 230px;
+      overflow: hidden;
+      background: linear-gradient(145deg, #f7f7fb, #fff4f8);
+    }
+
+    .app-visual.keycap img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .app-visual.kkiri {
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255,183,193,.85), transparent 28%),
+        radial-gradient(circle at 82% 80%, rgba(173,200,255,.85), transparent 30%),
+        linear-gradient(135deg, #fff2f5, #edf3ff);
+    }
+
+    .kkiri-mark {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 132px;
+      height: 132px;
+      border-radius: 34px;
+      overflow: hidden;
+      box-shadow: 0 24px 50px rgba(68,72,96,.16);
+      transform: rotate(-3deg);
+      background: rgba(255,255,255,.72);
+    }
+
+    .kkiri-mark span {
+      display: grid;
+      place-items: center;
+      font-size: 2.35rem;
+      font-weight: 900;
+      letter-spacing: -.12em;
+    }
+
+    .kkiri-mark span:nth-child(1),
+    .kkiri-mark span:nth-child(3) { color: #d95867; background: rgba(255,208,214,.62); }
+    .kkiri-mark span:nth-child(2),
+    .kkiri-mark span:nth-child(4) { color: #506fb4; background: rgba(207,221,255,.68); }
+
+    .status-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      color: #30333a;
+      background: rgba(255,255,255,.88);
+      font-size: .76rem;
+      font-weight: 800;
+    }
+
+    .app-card-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 22px;
+    }
+
+    .app-title-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .app-icon {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      flex: 0 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #f5f5f8;
+      box-shadow: 0 10px 22px rgba(20,22,28,.08);
+    }
+
+    .app-icon img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
+    .app-icon.kkiri-mini {
+      font-size: .96rem;
+      font-weight: 900;
+      color: #5a5e6a;
+      background: linear-gradient(135deg, #ffd7dd 0 50%, #d9e5ff 50% 100%);
+    }
+
+    .app-card h3 {
+      margin: 0;
+      font-size: 1.35rem;
+      line-height: 1.2;
+    }
+
+    .platform {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: .83rem;
+    }
+
+    .app-summary {
+      margin: 16px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: .94rem;
+    }
+
+    .app-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: auto;
+      padding-top: 18px;
+      font-size: .9rem;
+      font-weight: 800;
+    }
+
+    .app-more::after {
+      content: "→";
+      transition: transform .18s ease;
+    }
+
+    .app-card:hover .app-more::after { transform: translateX(4px); }
+
     .footer {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: end;
+      padding: 14px 0 42px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .footer strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    dialog {
+      width: min(calc(100% - 28px), 760px);
+      max-height: min(86vh, 900px);
+      padding: 0;
+      border: 0;
+      border-radius: 28px;
+      overflow: auto;
+      color: var(--text);
+      background: #fff;
+      box-shadow: 0 34px 100px rgba(20,22,30,.28);
+    }
+
+    dialog::backdrop {
+      background: rgba(20,22,28,.55);
+      backdrop-filter: blur(7px);
+    }
+
+    .dialog-inner { padding: 28px; }
+
+    .dialog-top {
       display: flex;
       justify-content: space-between;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .dialog-title-wrap {
+      display: flex;
+      gap: 14px;
       align-items: center;
-      gap: 16px;
-      padding: 10px 0 42px;
+    }
+
+    .dialog-title-wrap .app-icon { width: 58px; height: 58px; }
+    .dialog-title-wrap h3 { margin: 0; font-size: 1.55rem; }
+    .dialog-title-wrap p { margin: 4px 0 0; color: var(--muted); font-size: .9rem; }
+
+    .close-btn {
+      width: 40px;
+      height: 40px;
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .dialog-copy {
+      margin-top: 24px;
       color: var(--muted);
-      font-size: 0.92rem;
+      line-height: 1.8;
     }
 
-    @media (max-width: 980px) {
+    .dialog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .detail-chip {
+      padding: 14px;
+      border-radius: 16px;
+      background: #f7f7fa;
+      border: 1px solid var(--line);
+    }
+
+    .detail-chip strong {
+      display: block;
+      font-size: .88rem;
+    }
+
+    .detail-chip span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: .8rem;
+      line-height: 1.5;
+    }
+
+    .coming-panel {
+      margin-top: 24px;
+      padding: 18px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255,214,221,.55), rgba(215,228,255,.62));
+    }
+
+    .coming-panel strong { display: block; }
+    .coming-panel span {
+      display: block;
+      margin-top: 5px;
+      color: #666b76;
+      line-height: 1.65;
+      font-size: .9rem;
+    }
+
+    @media (max-width: 900px) {
       .hero-grid,
-      .stack,
-      .project {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: auto;
-      }
+      .company-grid,
+      .apps-grid { grid-template-columns: 1fr; }
 
       .hero-grid {
+        padding: 34px;
         min-height: auto;
       }
 
-      .hero-side {
-        width: 100%;
-        justify-self: stretch;
-      }
+      .hero { min-height: auto; }
+      .app-card { min-height: 390px; }
     }
 
-    @media (max-width: 720px) {
-      .shell {
-        width: min(calc(100% - 20px), var(--max));
-      }
+    @media (max-width: 680px) {
+      .shell { width: min(calc(100% - 20px), var(--max)); }
 
-      .topbar,
-      .footer {
-        flex-direction: column;
+      .topbar {
         align-items: flex-start;
+        flex-direction: column;
       }
 
-      .hero-grid {
-        padding: 18px;
+      .top-actions {
+        width: 100%;
+        justify-content: space-between;
       }
 
-      h1 {
-        font-size: clamp(2.5rem, 12vw, 4.1rem);
-      }
+      .hero-grid { padding: 24px; }
+      h1 { font-size: clamp(2.55rem, 13vw, 4rem); }
 
-      .card,
-      .glass-card {
-        padding: 20px;
+      .section-card { padding: 22px; }
+      .section-head { align-items: start; flex-direction: column; }
+      .business-row { grid-template-columns: 92px 1fr; }
+      .dialog-grid { grid-template-columns: 1fr; }
+      .dialog-inner { padding: 22px; }
+
+      .footer {
+        grid-template-columns: 1fr;
+        align-items: start;
       }
     }
   </style>
@@ -453,225 +733,323 @@
   <div class="shell">
     <header class="topbar">
       <a class="brand" href="#top" id="top" aria-label="Derrick2Sky home">
-        <img src="./assets/profile/icon.png" alt="Derrick2Sky profile icon" />
+        <img src="./assets/profile/icon.png" alt="Derrick2Sky icon" />
         <span>
           <strong>Derrick2Sky</strong>
-          <span>Developer Page</span>
+          <span>Software Studio</span>
         </span>
       </a>
-      <span class="contact">derrick2sky@gmail.com</span>
+
+      <div class="top-actions">
+        <a class="contact" href="mailto:derrick2sky@gmail.com">derrick2sky@gmail.com</a>
+        <div class="lang-toggle" aria-label="Language">
+          <button type="button" class="active" data-lang="ko">KO</button>
+          <button type="button" data-lang="en">EN</button>
+        </div>
+      </div>
     </header>
 
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-grid">
         <div class="hero-copy">
           <span class="eyebrow">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 3l2.2 4.8L19 10l-3.8 3.7.8 5.3L12 16.8 8 19l.8-5.3L5 10l4.8-2.2L12 3z"></path>
-            </svg>
-            Developer focused
+            <span class="eyebrow-dot"></span>
+            <span data-ko="독립 소프트웨어 스튜디오" data-en="Independent software studio">독립 소프트웨어 스튜디오</span>
           </span>
-          <h1 id="hero-title">Building usable<br />digital products</h1>
-          <p class="lead">
-            Hi, I’m Derrick2Sky. I build products where interface, interaction, and implementation stay aligned.
-            I care about screens that do more than look finished: they should respond clearly, persist state cleanly,
-            and hold up when they move closer to release.
+
+          <h1 id="hero-title" data-ko="작지만 오래 쓰이는<br>디지털 제품을 만듭니다" data-en="Building small digital<br>products that last">
+            작지만 오래 쓰이는<br>디지털 제품을 만듭니다
+          </h1>
+
+          <p class="lead"
+             data-ko="Derrick2Sky는 모바일 앱을 중심으로 아이디어를 실제 제품으로 만들고, 사용 흐름과 구현 완성도를 함께 다듬는 소프트웨어 스튜디오입니다."
+             data-en="Derrick2Sky is an independent software studio that turns ideas into real mobile products, with equal attention to user flow and implementation quality.">
+            Derrick2Sky는 모바일 앱을 중심으로 아이디어를 실제 제품으로 만들고, 사용 흐름과 구현 완성도를 함께 다듬는 소프트웨어 스튜디오입니다.
           </p>
+
           <div class="hero-actions">
-            <a class="button button-primary" href="mailto:derrick2sky@gmail.com">Contact</a>
-            <a class="button button-secondary" href="#apps">Apps</a>
+            <a class="button button-primary" href="#company" data-ko="회사 소개" data-en="About the studio">회사 소개</a>
+            <a class="button button-secondary" href="#apps" data-ko="앱 보기" data-en="View apps">앱 보기</a>
           </div>
         </div>
 
-        <aside class="hero-side" aria-label="Developer summary">
-          <div class="glass-card">
-            <strong>Build</strong>
-            <span>I work on functional screens and the real user flows behind them.</span>
+        <div class="dev-panel" aria-label="Developer visual">
+          <div class="dev-window">
+            <div class="window-top"><i></i><i></i><i></i></div>
+            <div class="dev-body">
+              <img src="./assets/profile/icon.png" alt="Derrick2Sky profile icon" />
+              <div class="code-lines" aria-hidden="true">
+                <div class="code-line"></div>
+                <div class="code-line"></div>
+                <div class="code-line"></div>
+                <div class="code-line"></div>
+                <div class="code-line"></div>
+              </div>
+            </div>
           </div>
-          <div class="glass-card">
-            <strong>Refine</strong>
-            <span>I prefer structure that removes noise and leaves the essential signal.</span>
+          <div class="dev-labels">
+            <span>Design</span>
+            <span>Build</span>
+            <span>Ship</span>
           </div>
-          <div class="glass-card">
-            <strong>Ship</strong>
-            <span>I like small projects that are still finished with release-minded discipline.</span>
-          </div>
-        </aside>
+        </div>
       </div>
     </section>
 
-    <main class="content">
-      <div class="stack">
-        <section class="card" aria-labelledby="about-title">
-          <div class="card-head">
-            <span class="icon-box">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4z"></path>
-                <path d="M5 20a7 7 0 0 1 14 0"></path>
-              </svg>
-            </span>
-            About
+    <main>
+      <section class="section-card" id="company" aria-labelledby="company-title">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Company</span>
+            <h2 id="company-title" data-ko="Derrick2Sky 소개" data-en="About Derrick2Sky">Derrick2Sky 소개</h2>
+            <p class="section-sub"
+               data-ko="하나의 앱을 단순한 화면이 아니라 실제로 사용할 수 있는 제품으로 완성하는 것을 목표로 합니다."
+               data-en="We focus on turning each app into a usable product, not just a collection of screens.">
+              하나의 앱을 단순한 화면이 아니라 실제로 사용할 수 있는 제품으로 완성하는 것을 목표로 합니다.
+            </p>
           </div>
-          <h2 id="about-title">What I work on</h2>
-          <p>
-            I mainly work on mobile apps, interaction-heavy interfaces, and screens with meaningful state changes.
-            I tend to focus less on static presentation and more on production-shaped flows: settings, persistence,
-            media handling, and the polish required before shipping.
-          </p>
-          <p>
-            Even in personal projects, I try to make the product feel complete.
-            That means thinking about first impression, response after input, recoverability, and operational details together.
-          </p>
-        </section>
-
-        <section class="card" aria-labelledby="work-title">
-          <div class="card-head">
-            <span class="icon-box">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 7h16"></path>
-                <path d="M4 12h16"></path>
-                <path d="M4 17h10"></path>
-              </svg>
-            </span>
-            Approach
-          </div>
-          <h2 id="work-title">How I build</h2>
-          <div class="mini-list">
-            <div class="mini-item">
-              <strong>Flow before fragments</strong>
-              <span>I look at the full path first: enter, change, save, return, and verify.</span>
-            </div>
-            <div class="mini-item">
-              <strong>Separation that survives change</strong>
-              <span>I split state, screens, widgets, and settings logic so the shape still holds as features accumulate.</span>
-            </div>
-            <div class="mini-item">
-              <strong>Release-minded scope</strong>
-              <span>I include practical surfaces early: assets, billing, ads, settings, restore flows, and the edges around them.</span>
-            </div>
-          </div>
-        </section>
-
-        <section class="card" aria-labelledby="focus-title">
-          <div class="card-head">
-            <span class="icon-box">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 12h16"></path>
-                <path d="M12 4v16"></path>
-              </svg>
-            </span>
-            Focus
-          </div>
-          <h2 id="focus-title">What matters to me</h2>
-          <div class="mini-list">
-            <div class="mini-item">
-              <strong>Clarity</strong>
-              <span>The first screen should explain what the product does and where the user should act.</span>
-            </div>
-            <div class="mini-item">
-              <strong>Interaction</strong>
-              <span>I prefer interactions where selection, preview, editing, and result stay connected.</span>
-            </div>
-            <div class="mini-item">
-              <strong>Implementation</strong>
-              <span>I care about the real implementation layer, not just the surface: persistence, media, permissions, and monetization.</span>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <section class="card" id="apps" aria-labelledby="apps-title">
-        <div class="card-head">
-          <span class="icon-box">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="3" y="4" width="7" height="7" rx="1.5"></rect>
-              <rect x="14" y="4" width="7" height="7" rx="1.5"></rect>
-              <rect x="3" y="13" width="7" height="7" rx="1.5"></rect>
-              <rect x="14" y="13" width="7" height="7" rx="1.5"></rect>
-            </svg>
-          </span>
-          Apps
         </div>
-        <h2 id="apps-title">Current app work</h2>
-        <p>
-          This section is meant to grow over time. Right now it highlights one app, but the layout is intended
-          to expand as more shipped or in-progress apps are added.
-        </p>
 
-        <div class="project">
-          <div class="project-copy">
-            <div class="project-badge">
-              <img src="./assets/keycap-keyring/app_icon.png" alt="KeyCap KeyRing app icon" />
-              <span>
-                <strong>KeyCap KeyRing</strong>
-                <span>Flutter · Android · iOS</span>
-              </span>
-            </div>
-
-            <h3>A customization app for building miniature keycap keyring combinations</h3>
-            <p>
-              KeyCap KeyRing is an Android app for composing miniature keycap keyring setups directly on screen.
-              It is designed so layout, switch, keycap, and photo choices update the result immediately,
-              with the visual style integrated into the actual selection flow rather than treated as decoration.
+        <div class="company-grid">
+          <div class="company-copy">
+            <h3 data-ko="아이디어에서 출시까지" data-en="From idea to release">아이디어에서 출시까지</h3>
+            <p data-ko="Derrick2Sky는 모바일 앱과 인터랙션 중심의 디지털 제품을 개발합니다. 기능 구조, 사용자 흐름, 상태 저장, 미디어 처리, 결제와 운영에 필요한 실제 구현까지 한 제품 안에서 연결하는 방식으로 작업합니다."
+               data-en="Derrick2Sky builds mobile apps and interaction-focused digital products. We connect product structure, user flow, state persistence, media handling, payments, and operational details into one coherent implementation.">
+              Derrick2Sky는 모바일 앱과 인터랙션 중심의 디지털 제품을 개발합니다. 기능 구조, 사용자 흐름, 상태 저장, 미디어 처리, 결제와 운영에 필요한 실제 구현까지 한 제품 안에서 연결하는 방식으로 작업합니다.
             </p>
-            <p>
-              The app is built with Flutter, with theme setup at the MaterialApp entry point and responsibilities
-              split across AppShell, screen-level composition, and widget-level controls. It also includes practical
-              mobile surfaces such as image picking, recording, playback, audio trimming, in-app purchase, and ads.
+            <p data-ko="현재 KeyCap KeyRing과 가치관 기반 소셜 서비스 끼리끼리를 포함한 여러 앱을 개발하고 있습니다."
+               data-en="Current work includes KeyCap KeyRing and KkiriKkiri, a value-compatibility social service, along with other mobile product experiments.">
+              현재 KeyCap KeyRing과 가치관 기반 소셜 서비스 끼리끼리를 포함한 여러 앱을 개발하고 있습니다.
             </p>
-
-            <div class="project-meta" aria-label="Project metadata">
-              <span>
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4 12h16"></path>
-                  <path d="M8 8l-4 4 4 4"></path>
-                  <path d="M16 8l4 4-4 4"></path>
-                </svg>
-                Layout + Switch + Keycap
-              </span>
-              <span>
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4 7h16v10H4z"></path>
-                  <path d="M8 11l2.5 3 2.5-2 3 4"></path>
-                </svg>
-                Photo Custom
-              </span>
-              <span>
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12 6v6l4 2"></path>
-                  <circle cx="12" cy="12" r="9"></circle>
-                </svg>
-                Local First
-              </span>
-            </div>
-
-            <div class="mini-list">
-              <div class="mini-item">
-                <strong>UI Layer</strong>
-                <span>The UI is split across preview-first main, customization, and settings screens, with selection controls separated into focused widgets.</span>
-              </div>
-              <div class="mini-item">
-                <strong>Media Handling</strong>
-                <span>image_picker, record, audioplayers, and ffmpeg are used to support photo keycaps and switch-sound editing flows.</span>
-              </div>
-              <div class="mini-item">
-                <strong>Product Surface</strong>
-                <span>in_app_purchase, google_mobile_ads, settings, and restore flows are included so the app can move toward a release-ready shape.</span>
-              </div>
-            </div>
           </div>
 
-          <figure class="project-shot">
-            <img src="./assets/keycap-keyring/phone-keycap.png" alt="KeyCap KeyRing app screen" />
-          </figure>
+          <aside class="business-card" aria-label="Business information">
+            <h3 data-ko="사업자 정보" data-en="Business information">사업자 정보</h3>
+            <div class="business-list">
+              <div class="business-row">
+                <span data-ko="상호" data-en="Business">상호</span>
+                <strong>데릭투스카이</strong>
+              </div>
+              <div class="business-row">
+                <span data-ko="대표자" data-en="Representative">대표자</span>
+                <strong>이세준</strong>
+              </div>
+              <div class="business-row">
+                <span data-ko="사업자번호" data-en="Registration No.">사업자번호</span>
+                <strong>724-23-02291</strong>
+              </div>
+              <div class="business-row">
+                <span data-ko="문의" data-en="Contact">문의</span>
+                <strong>derrick2sky@gmail.com</strong>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section-card" id="apps" aria-labelledby="apps-title">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Apps</span>
+            <h2 id="apps-title" data-ko="Derrick2Sky의 앱" data-en="Apps by Derrick2Sky">Derrick2Sky의 앱</h2>
+            <p class="section-sub"
+               data-ko="출시 또는 개발 중인 앱을 소개합니다. 카드를 누르면 각 앱의 상세 설명을 볼 수 있습니다."
+               data-en="Explore released and in-development apps. Select a card to read more about each product.">
+              출시 또는 개발 중인 앱을 소개합니다. 카드를 누르면 각 앱의 상세 설명을 볼 수 있습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="apps-grid">
+          <button class="app-card" type="button" data-dialog="keycap-dialog">
+            <div class="app-visual keycap">
+              <img src="./assets/keycap-keyring/phone-keycap.png" alt="KeyCap KeyRing app screen" />
+              <span class="status-badge">Mobile App</span>
+            </div>
+            <div class="app-card-body">
+              <div class="app-title-row">
+                <span class="app-icon"><img src="./assets/keycap-keyring/app_icon.png" alt="KeyCap KeyRing icon" /></span>
+                <span>
+                  <h3>KeyCap KeyRing</h3>
+                  <span class="platform">Flutter · Android · iOS</span>
+                </span>
+              </div>
+              <p class="app-summary"
+                 data-ko="미니어처 키캡 키링의 레이아웃, 스위치, 키캡과 사진을 화면에서 조합하고 바로 확인할 수 있는 커스터마이징 앱입니다."
+                 data-en="A customization app for composing miniature keycap keyring combinations, including layouts, switches, keycaps, and photo-based designs.">
+                미니어처 키캡 키링의 레이아웃, 스위치, 키캡과 사진을 화면에서 조합하고 바로 확인할 수 있는 커스터마이징 앱입니다.
+              </p>
+              <span class="app-more" data-ko="자세히 보기" data-en="View details">자세히 보기</span>
+            </div>
+          </button>
+
+          <button class="app-card" type="button" data-dialog="kkiri-dialog">
+            <div class="app-visual kkiri">
+              <div class="kkiri-mark" aria-label="끼리끼리 temporary brand mark">
+                <span>ㄲ</span><span>ㄹ</span><span>ㄲ</span><span>ㄹ</span>
+              </div>
+              <span class="status-badge" data-ko="출시 준비 중" data-en="Coming Soon">출시 준비 중</span>
+            </div>
+            <div class="app-card-body">
+              <div class="app-title-row">
+                <span class="app-icon kkiri-mini">ㄲㄹ</span>
+                <span>
+                  <h3>끼리끼리</h3>
+                  <span class="platform">Flutter · Android · iOS</span>
+                </span>
+              </div>
+              <p class="app-summary"
+                 data-ko="친구와 같은 질문에 답하고 서로의 생각과 가치관이 얼마나 닮아 있는지 확인하는 가치관 기반 소셜 서비스입니다."
+                 data-en="A value-compatibility social service where friends answer the same questions and discover where their perspectives align or differ.">
+                친구와 같은 질문에 답하고 서로의 생각과 가치관이 얼마나 닮아 있는지 확인하는 가치관 기반 소셜 서비스입니다.
+              </p>
+              <span class="app-more" data-ko="자세히 보기" data-en="View details">자세히 보기</span>
+            </div>
+          </button>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <span>Derrick2Sky Developer Page</span>
-      <span>derrick2sky@gmail.com</span>
+      <div>
+        <strong>Derrick2Sky</strong>
+        <span data-ko="모바일 앱과 디지털 제품을 개발합니다." data-en="Mobile apps and digital products.">모바일 앱과 디지털 제품을 개발합니다.</span>
+      </div>
+      <div>
+        <span data-ko="데릭투스카이 · 대표 이세준 · 사업자등록번호 724-23-02291" data-en="Derrick2Sky · Representative Sejun Lee · Business Registration No. 724-23-02291">
+          데릭투스카이 · 대표 이세준 · 사업자등록번호 724-23-02291
+        </span>
+      </div>
     </footer>
   </div>
+
+  <dialog id="keycap-dialog">
+    <div class="dialog-inner">
+      <div class="dialog-top">
+        <div class="dialog-title-wrap">
+          <span class="app-icon"><img src="./assets/keycap-keyring/app_icon.png" alt="KeyCap KeyRing icon" /></span>
+          <span>
+            <h3>KeyCap KeyRing</h3>
+            <p>Flutter · Android · iOS</p>
+          </span>
+        </div>
+        <button class="close-btn" type="button" aria-label="Close">×</button>
+      </div>
+
+      <div class="dialog-copy">
+        <p data-ko="KeyCap KeyRing은 작은 키캡 키링 조합을 화면에서 직접 만들어 보는 커스터마이징 앱입니다. 레이아웃, 스위치, 키캡, 사진 선택이 결과에 즉시 반영되도록 구성되어 있습니다."
+           data-en="KeyCap KeyRing is a customization app for building miniature keycap keyring combinations directly on screen. Layout, switch, keycap, and photo choices are reflected in the result immediately.">
+          KeyCap KeyRing은 작은 키캡 키링 조합을 화면에서 직접 만들어 보는 커스터마이징 앱입니다. 레이아웃, 스위치, 키캡, 사진 선택이 결과에 즉시 반영되도록 구성되어 있습니다.
+        </p>
+        <p data-ko="Flutter 기반으로 제작되며 이미지 선택, 녹음과 재생, 오디오 편집, 인앱 구매, 광고, 설정과 복원 흐름 등 실제 모바일 제품에 필요한 기능을 함께 다룹니다."
+           data-en="Built with Flutter, it also covers practical mobile product surfaces such as image picking, recording and playback, audio editing, in-app purchases, ads, settings, and restore flows.">
+          Flutter 기반으로 제작되며 이미지 선택, 녹음과 재생, 오디오 편집, 인앱 구매, 광고, 설정과 복원 흐름 등 실제 모바일 제품에 필요한 기능을 함께 다룹니다.
+        </p>
+      </div>
+
+      <div class="dialog-grid">
+        <div class="detail-chip">
+          <strong>Customization</strong>
+          <span data-ko="레이아웃 · 스위치 · 키캡 조합" data-en="Layout · switch · keycap combinations">레이아웃 · 스위치 · 키캡 조합</span>
+        </div>
+        <div class="detail-chip">
+          <strong>Photo</strong>
+          <span data-ko="사진 기반 키캡 커스텀" data-en="Photo-based custom keycaps">사진 기반 키캡 커스텀</span>
+        </div>
+        <div class="detail-chip">
+          <strong>Mobile Product</strong>
+          <span data-ko="결제 · 광고 · 설정 · 복원" data-en="Billing · ads · settings · restore">결제 · 광고 · 설정 · 복원</span>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="kkiri-dialog">
+    <div class="dialog-inner">
+      <div class="dialog-top">
+        <div class="dialog-title-wrap">
+          <span class="app-icon kkiri-mini">ㄲㄹ</span>
+          <span>
+            <h3>끼리끼리</h3>
+            <p data-ko="가치관 기반 소셜 서비스" data-en="Value-compatibility social service">가치관 기반 소셜 서비스</p>
+          </span>
+        </div>
+        <button class="close-btn" type="button" aria-label="Close">×</button>
+      </div>
+
+      <div class="coming-panel">
+        <strong data-ko="현재 출시 준비 중입니다." data-en="Currently preparing for release.">현재 출시 준비 중입니다.</strong>
+        <span data-ko="개발 중인 서비스이므로 정식 스토어 스크린샷과 다운로드 링크는 출시 준비가 완료된 뒤 추가할 예정입니다."
+              data-en="The service is still in development, so official store screenshots and download links will be added when release preparation is complete.">
+          개발 중인 서비스이므로 정식 스토어 스크린샷과 다운로드 링크는 출시 준비가 완료된 뒤 추가할 예정입니다.
+        </span>
+      </div>
+
+      <div class="dialog-copy">
+        <p data-ko="끼리끼리는 Derrick2Sky가 개발·운영하는 가치관 기반 소셜 서비스입니다. 사용자는 기본 가치관 질문과 매일 공개되는 질문에 답하고, 친구와의 공통 답변을 바탕으로 서로의 생각이 얼마나 비슷하고 다른지 확인할 수 있습니다."
+           data-en="KkiriKkiri is a value-compatibility social service developed and operated by Derrick2Sky. Users answer core value questions and daily prompts, then compare shared responses with friends to understand where their perspectives align or differ.">
+          끼리끼리는 Derrick2Sky가 개발·운영하는 가치관 기반 소셜 서비스입니다. 사용자는 기본 가치관 질문과 매일 공개되는 질문에 답하고, 친구와의 공통 답변을 바탕으로 서로의 생각이 얼마나 비슷하고 다른지 확인할 수 있습니다.
+        </p>
+        <p data-ko="서비스는 친구 간 궁합을 한 번의 테스트 결과로 고정하지 않고, 시간이 지나며 쌓이는 답변을 통해 계속 변화하는 관계 지표로 보여주는 것을 목표로 합니다."
+           data-en="Rather than treating compatibility as a one-time test result, the service is designed to show a relationship signal that evolves as friends continue answering questions over time.">
+          서비스는 친구 간 궁합을 한 번의 테스트 결과로 고정하지 않고, 시간이 지나며 쌓이는 답변을 통해 계속 변화하는 관계 지표로 보여주는 것을 목표로 합니다.
+        </p>
+      </div>
+
+      <div class="dialog-grid">
+        <div class="detail-chip">
+          <strong data-ko="기본 가치관" data-en="Core Values">기본 가치관</strong>
+          <span data-ko="처음 시작할 때 답하는 가치관 질문" data-en="Initial questions that establish a starting profile">처음 시작할 때 답하는 가치관 질문</span>
+        </div>
+        <div class="detail-chip">
+          <strong data-ko="매일 질문" data-en="Daily Questions">매일 질문</strong>
+          <span data-ko="매일 하나씩 쌓이는 새로운 질문" data-en="One new prompt added each day">매일 하나씩 쌓이는 새로운 질문</span>
+        </div>
+        <div class="detail-chip">
+          <strong data-ko="친구 궁합" data-en="Friend Compatibility">친구 궁합</strong>
+          <span data-ko="공통 답변을 기반으로 변화하는 궁합" data-en="Compatibility that evolves from shared answers">공통 답변을 기반으로 변화하는 궁합</span>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    const langButtons = document.querySelectorAll("[data-lang]");
+    const translatedNodes = document.querySelectorAll("[data-ko][data-en]");
+
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+      translatedNodes.forEach((node) => {
+        const value = node.dataset[lang];
+        if (value !== undefined) node.innerHTML = value;
+      });
+      langButtons.forEach((button) => {
+        button.classList.toggle("active", button.dataset.lang === lang);
+      });
+      localStorage.setItem("d2s-language", lang);
+    }
+
+    langButtons.forEach((button) => {
+      button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+
+    document.querySelectorAll("[data-dialog]").forEach((card) => {
+      card.addEventListener("click", () => {
+        const dialog = document.getElementById(card.dataset.dialog);
+        if (dialog) dialog.showModal();
+      });
+    });
+
+    document.querySelectorAll("dialog").forEach((dialog) => {
+      const closeButton = dialog.querySelector(".close-btn");
+      closeButton?.addEventListener("click", () => dialog.close());
+      dialog.addEventListener("click", (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+    });
+
+    const savedLanguage = localStorage.getItem("d2s-language");
+    setLanguage(savedLanguage === "en" ? "en" : "ko");
+  </script>
 </body>
 </html>
