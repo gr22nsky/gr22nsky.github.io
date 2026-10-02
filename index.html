@@ -7,6 +7,8 @@
   <meta name="color-scheme" content="light" />
   <link rel="icon" type="image/png" href="./assets/profile/icon.png" />
   <title>Derrick2Sky | Software Studio</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" />
   <style>
     :root {
       --bg: #f6f7fb;
@@ -30,7 +32,7 @@
 
     body {
       margin: 0;
-      font-family: "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       background:
         radial-gradient(circle at 12% 0%, rgba(255, 202, 224, 0.5), transparent 24%),
@@ -121,7 +123,7 @@
       position: relative;
       overflow: hidden;
       border-radius: var(--radius-xl);
-      min-height: 610px;
+      min-height: 520px;
       background:
         radial-gradient(circle at 80% 18%, rgba(255,255,255,0.18), transparent 22%),
         linear-gradient(135deg, #171920 0%, #24232f 48%, #3f3147 100%);
@@ -159,8 +161,8 @@
       grid-template-columns: minmax(0, 1.05fr) minmax(320px, .8fr);
       gap: 34px;
       align-items: center;
-      min-height: 610px;
-      padding: 54px;
+      min-height: 520px;
+      padding: 46px 50px;
     }
 
     .hero-copy { color: #fff; max-width: 650px; }
@@ -188,18 +190,23 @@
     }
 
     h1 {
-      margin: 22px 0 0;
-      font-size: clamp(3rem, 6.5vw, 5.4rem);
-      line-height: .98;
+      margin: 20px 0 0;
+      max-width: 650px;
+      font-size: clamp(2.45rem, 4.6vw, 3.95rem);
+      font-weight: 720;
+      line-height: 1.08;
       letter-spacing: -0.045em;
+      text-wrap: balance;
     }
 
     .lead {
-      margin: 22px 0 0;
-      max-width: 610px;
-      color: rgba(255,255,255,.76);
-      font-size: 1.08rem;
-      line-height: 1.8;
+      margin: 20px 0 0;
+      max-width: 590px;
+      color: rgba(255,255,255,.72);
+      font-size: 1rem;
+      font-weight: 430;
+      line-height: 1.78;
+      letter-spacing: -0.012em;
     }
 
     .hero-actions {
@@ -352,8 +359,9 @@
 
     h2 {
       margin: 8px 0 0;
-      font-size: clamp(2rem, 3.7vw, 3rem);
-      line-height: 1.08;
+      font-size: clamp(1.8rem, 3vw, 2.55rem);
+      font-weight: 720;
+      line-height: 1.12;
       letter-spacing: -.035em;
     }
 
@@ -443,49 +451,56 @@
       position: relative;
       display: grid;
       place-items: center;
-      min-height: 230px;
+      height: 260px;
       overflow: hidden;
-      background: linear-gradient(145deg, #f7f7fb, #fff4f8);
+      background: #f3f4f7;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .app-visual.keycap {
+      background: #eceef3;
     }
 
     .app-visual.keycap img {
       width: 100%;
-      height: 230px;
+      height: 100%;
       object-fit: cover;
       object-position: center;
     }
 
     .app-visual.kkiri {
       background:
-        radial-gradient(circle at 20% 10%, rgba(255,183,193,.85), transparent 28%),
-        radial-gradient(circle at 82% 80%, rgba(173,200,255,.85), transparent 30%),
-        linear-gradient(135deg, #fff2f5, #edf3ff);
+        linear-gradient(135deg, rgba(255,255,255,.96), rgba(247,248,252,.96)),
+        radial-gradient(circle at 15% 20%, rgba(255,208,218,.45), transparent 25%),
+        radial-gradient(circle at 85% 85%, rgba(209,222,255,.5), transparent 28%);
     }
 
-    .kkiri-mark {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: 132px;
-      height: 132px;
-      border-radius: 34px;
-      overflow: hidden;
-      box-shadow: 0 24px 50px rgba(68,72,96,.16);
-      transform: rotate(-3deg);
-      background: rgba(255,255,255,.72);
-    }
-
-    .kkiri-mark span {
+    .coming-empty {
       display: grid;
       place-items: center;
-      font-size: 2.35rem;
-      font-weight: 900;
-      letter-spacing: -.12em;
+      width: calc(100% - 42px);
+      height: calc(100% - 42px);
+      border: 1px dashed rgba(44, 48, 60, .18);
+      border-radius: 22px;
+      background: rgba(255,255,255,.52);
+      color: #8a8e98;
+      text-align: center;
     }
 
-    .kkiri-mark span:nth-child(1),
-    .kkiri-mark span:nth-child(3) { color: #d95867; background: rgba(255,208,214,.62); }
-    .kkiri-mark span:nth-child(2),
-    .kkiri-mark span:nth-child(4) { color: #506fb4; background: rgba(207,221,255,.68); }
+    .coming-empty strong {
+      display: block;
+      color: #555a66;
+      font-size: .98rem;
+      font-weight: 720;
+      letter-spacing: -.015em;
+    }
+
+    .coming-empty span {
+      display: block;
+      margin-top: 7px;
+      font-size: .8rem;
+      line-height: 1.5;
+    }
 
     .status-badge {
       position: absolute;
@@ -531,10 +546,13 @@
     }
 
     .app-icon.kkiri-mini {
-      font-size: .96rem;
-      font-weight: 900;
-      color: #5a5e6a;
-      background: linear-gradient(135deg, #ffd7dd 0 50%, #d9e5ff 50% 100%);
+      background: #f7f7f9;
+    }
+
+    .app-icon.kkiri-mini img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .app-card h3 {
@@ -591,8 +609,8 @@
     }
 
     dialog {
-      width: min(calc(100% - 28px), 760px);
-      max-height: min(86vh, 900px);
+      width: min(calc(100% - 28px), 980px);
+      max-height: min(90vh, 980px);
       padding: 0;
       border: 0;
       border-radius: 28px;
@@ -686,10 +704,156 @@
       font-size: .9rem;
     }
 
+
+    .detail-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(280px, .92fr);
+      gap: 22px;
+      margin-top: 26px;
+      align-items: start;
+    }
+
+    .detail-copy-card {
+      padding: 22px;
+      border-radius: 20px;
+      background: #f8f8fb;
+      border: 1px solid var(--line);
+    }
+
+    .detail-copy-card h4 {
+      margin: 0;
+      font-size: 1.02rem;
+      font-weight: 720;
+      letter-spacing: -.02em;
+    }
+
+    .detail-copy-card p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.78;
+      font-size: .92rem;
+    }
+
+    .modal-preview {
+      min-height: 250px;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #eef0f4;
+      border: 1px solid var(--line);
+    }
+
+    .modal-preview img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .modal-preview.placeholder {
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, #fafafa, #f1f3f8);
+    }
+
+    .modal-preview.placeholder .coming-empty {
+      width: calc(100% - 30px);
+      height: calc(100% - 30px);
+    }
+
+    .screenshot-section {
+      margin-top: 26px;
+    }
+
+    .screenshot-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .screenshot-head h4 {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 720;
+    }
+
+    .screenshot-head span {
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .screenshots {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .screen-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 240px;
+      border-radius: 18px;
+      background: #f2f3f6;
+      border: 1px solid var(--line);
+    }
+
+    .screen-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .screen-card.contain img {
+      object-fit: contain;
+      padding: 8px;
+      background: #f3f4f7;
+    }
+
+    .screen-card.placeholder {
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      background: linear-gradient(145deg, #fafafa, #f2f3f7);
+    }
+
+    .screen-card.placeholder strong {
+      font-size: .86rem;
+      font-weight: 700;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 18px;
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .feature-row strong {
+      font-size: .88rem;
+      font-weight: 720;
+    }
+
+    .feature-row span {
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.65;
+    }
+
     @media (max-width: 900px) {
       .hero-grid,
       .company-grid,
-      .apps-grid { grid-template-columns: 1fr; }
+      .apps-grid,
+      .detail-hero { grid-template-columns: 1fr; }
+
+      .screenshots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
       .hero-grid {
         padding: 34px;
@@ -714,13 +878,17 @@
       }
 
       .hero-grid { padding: 24px; }
-      h1 { font-size: clamp(2.55rem, 13vw, 4rem); }
+      h1 { font-size: clamp(2.15rem, 10.5vw, 3.1rem); }
 
       .section-card { padding: 22px; }
       .section-head { align-items: start; flex-direction: column; }
       .business-row { grid-template-columns: 92px 1fr; }
       .dialog-grid { grid-template-columns: 1fr; }
       .dialog-inner { padding: 22px; }
+      .screenshots { grid-template-columns: 1fr 1fr; }
+      .screen-card,
+      .screen-card img { min-height: 190px; height: 190px; }
+      .feature-row { grid-template-columns: 1fr; gap: 6px; }
 
       .footer {
         grid-template-columns: 1fr;
@@ -757,14 +925,14 @@
             <span data-ko="독립 소프트웨어 스튜디오" data-en="Independent software studio">독립 소프트웨어 스튜디오</span>
           </span>
 
-          <h1 id="hero-title" data-ko="작지만 오래 쓰이는<br>디지털 제품을 만듭니다" data-en="Building small digital<br>products that last">
-            작지만 오래 쓰이는<br>디지털 제품을 만듭니다
+          <h1 id="hero-title" data-ko="아이디어를<br>쓸 수 있는 제품으로" data-en="Turning ideas into<br>products people use">
+            아이디어를<br>쓸 수 있는 제품으로
           </h1>
 
           <p class="lead"
-             data-ko="Derrick2Sky는 모바일 앱을 중심으로 아이디어를 실제 제품으로 만들고, 사용 흐름과 구현 완성도를 함께 다듬는 소프트웨어 스튜디오입니다."
+             data-ko="Derrick2Sky는 모바일 앱을 중심으로 기획, 인터랙션, 구현을 한 흐름으로 연결해 실제 출시 가능한 디지털 제품을 만듭니다."
              data-en="Derrick2Sky is an independent software studio that turns ideas into real mobile products, with equal attention to user flow and implementation quality.">
-            Derrick2Sky는 모바일 앱을 중심으로 아이디어를 실제 제품으로 만들고, 사용 흐름과 구현 완성도를 함께 다듬는 소프트웨어 스튜디오입니다.
+            Derrick2Sky는 모바일 앱을 중심으로 기획, 인터랙션, 구현을 한 흐름으로 연결해 실제 출시 가능한 디지털 제품을 만듭니다.
           </p>
 
           <div class="hero-actions">
@@ -885,14 +1053,17 @@
 
           <button class="app-card" type="button" data-dialog="kkiri-dialog">
             <div class="app-visual kkiri">
-              <div class="kkiri-mark" aria-label="끼리끼리 temporary brand mark">
-                <span>ㄲ</span><span>ㄹ</span><span>ㄲ</span><span>ㄹ</span>
+              <div class="coming-empty">
+                <div>
+                  <strong data-ko="출시 준비 중" data-en="Coming soon">출시 준비 중</strong>
+                  <span data-ko="스크린샷은 정식 출시 준비 후 공개됩니다." data-en="Screenshots will be added as release preparation progresses.">스크린샷은 정식 출시 준비 후 공개됩니다.</span>
+                </div>
               </div>
               <span class="status-badge" data-ko="출시 준비 중" data-en="Coming Soon">출시 준비 중</span>
             </div>
             <div class="app-card-body">
               <div class="app-title-row">
-                <span class="app-icon kkiri-mini">ㄲㄹ</span>
+                <span class="app-icon kkiri-mini"><img src="./assets/kkirikkiri/kkirikkiri_icon_512.png" alt="끼리끼리 icon" /></span>
                 <span>
                   <h3>끼리끼리</h3>
                   <span class="platform">Flutter · Android · iOS</span>
@@ -936,29 +1107,51 @@
         <button class="close-btn" type="button" aria-label="Close">×</button>
       </div>
 
-      <div class="dialog-copy">
-        <p data-ko="KeyCap KeyRing은 작은 키캡 키링 조합을 화면에서 직접 만들어 보는 커스터마이징 앱입니다. 레이아웃, 스위치, 키캡, 사진 선택이 결과에 즉시 반영되도록 구성되어 있습니다."
-           data-en="KeyCap KeyRing is a customization app for building miniature keycap keyring combinations directly on screen. Layout, switch, keycap, and photo choices are reflected in the result immediately.">
-          KeyCap KeyRing은 작은 키캡 키링 조합을 화면에서 직접 만들어 보는 커스터마이징 앱입니다. 레이아웃, 스위치, 키캡, 사진 선택이 결과에 즉시 반영되도록 구성되어 있습니다.
-        </p>
-        <p data-ko="Flutter 기반으로 제작되며 이미지 선택, 녹음과 재생, 오디오 편집, 인앱 구매, 광고, 설정과 복원 흐름 등 실제 모바일 제품에 필요한 기능을 함께 다룹니다."
-           data-en="Built with Flutter, it also covers practical mobile product surfaces such as image picking, recording and playback, audio editing, in-app purchases, ads, settings, and restore flows.">
-          Flutter 기반으로 제작되며 이미지 선택, 녹음과 재생, 오디오 편집, 인앱 구매, 광고, 설정과 복원 흐름 등 실제 모바일 제품에 필요한 기능을 함께 다룹니다.
-        </p>
+      <div class="detail-hero">
+        <div class="detail-copy-card">
+          <h4 data-ko="키캡 키링을 화면에서 직접 조합하는 커스터마이징 앱" data-en="A hands-on keycap keyring customization app">
+            키캡 키링을 화면에서 직접 조합하는 커스터마이징 앱
+          </h4>
+          <p data-ko="KeyCap KeyRing은 레이아웃, 스위치, 키캡, 사진 요소를 선택하면서 결과를 바로 확인할 수 있도록 만든 모바일 앱입니다. 단순한 미리보기보다 실제 커스터마이징 과정 자체가 자연스럽게 이어지도록 구성했습니다."
+             data-en="KeyCap KeyRing lets users combine layouts, switches, keycaps, and photo elements while previewing the result immediately. The product is designed around the customization flow itself rather than a static preview.">
+            KeyCap KeyRing은 레이아웃, 스위치, 키캡, 사진 요소를 선택하면서 결과를 바로 확인할 수 있도록 만든 모바일 앱입니다. 단순한 미리보기보다 실제 커스터마이징 과정 자체가 자연스럽게 이어지도록 구성했습니다.
+          </p>
+          <p data-ko="Flutter 기반으로 제작되며 이미지 선택, 녹음과 재생, 오디오 편집, 인앱 구매, 광고, 설정, 복원 등 실제 출시 앱에 필요한 기능까지 포함합니다."
+             data-en="Built with Flutter, it also includes production-minded features such as image picking, recording and playback, audio editing, in-app purchases, ads, settings, and restore flows.">
+            Flutter 기반으로 제작되며 이미지 선택, 녹음과 재생, 오디오 편집, 인앱 구매, 광고, 설정, 복원 등 실제 출시 앱에 필요한 기능까지 포함합니다.
+          </p>
+        </div>
+
+        <div class="modal-preview">
+          <img src="./assets/keycap-keyring/phone-main.png" alt="KeyCap KeyRing main screen" />
+        </div>
       </div>
 
-      <div class="dialog-grid">
-        <div class="detail-chip">
-          <strong>Customization</strong>
-          <span data-ko="레이아웃 · 스위치 · 키캡 조합" data-en="Layout · switch · keycap combinations">레이아웃 · 스위치 · 키캡 조합</span>
+      <div class="screenshot-section">
+        <div class="screenshot-head">
+          <h4 data-ko="앱 화면" data-en="App screens">앱 화면</h4>
+          <span data-ko="실제 프로젝트 asset 사용" data-en="Using project assets">실제 프로젝트 asset 사용</span>
         </div>
-        <div class="detail-chip">
-          <strong>Photo</strong>
-          <span data-ko="사진 기반 키캡 커스텀" data-en="Photo-based custom keycaps">사진 기반 키캡 커스텀</span>
+        <div class="screenshots">
+          <div class="screen-card"><img src="./assets/keycap-keyring/phone-main.png" alt="KeyCap KeyRing main screen" /></div>
+          <div class="screen-card"><img src="./assets/keycap-keyring/phone-keycap.png" alt="KeyCap KeyRing keycap screen" /></div>
+          <div class="screen-card"><img src="./assets/keycap-keyring/phone-switch.png" alt="KeyCap KeyRing switch screen" /></div>
+          <div class="screen-card contain"><img src="./assets/keycap-keyring/splash.png" alt="KeyCap KeyRing splash screen" /></div>
         </div>
-        <div class="detail-chip">
-          <strong>Mobile Product</strong>
-          <span data-ko="결제 · 광고 · 설정 · 복원" data-en="Billing · ads · settings · restore">결제 · 광고 · 설정 · 복원</span>
+      </div>
+
+      <div class="feature-list">
+        <div class="feature-row">
+          <strong data-ko="커스터마이징" data-en="Customization">커스터마이징</strong>
+          <span data-ko="레이아웃, 스위치, 키캡, 사진 요소를 조합하고 변경 결과를 즉시 확인합니다." data-en="Combine layouts, switches, keycaps, and photo elements with immediate visual feedback.">레이아웃, 스위치, 키캡, 사진 요소를 조합하고 변경 결과를 즉시 확인합니다.</span>
+        </div>
+        <div class="feature-row">
+          <strong data-ko="미디어 기능" data-en="Media">미디어 기능</strong>
+          <span data-ko="사진 선택과 사운드 녹음·재생·편집 흐름을 모바일 환경에 맞게 구성했습니다." data-en="Includes photo selection and mobile-first recording, playback, and audio editing flows.">사진 선택과 사운드 녹음·재생·편집 흐름을 모바일 환경에 맞게 구성했습니다.</span>
+        </div>
+        <div class="feature-row">
+          <strong data-ko="제품 운영" data-en="Product operations">제품 운영</strong>
+          <span data-ko="인앱 구매, 광고, 설정, 구매 복원 등 출시 이후 운영을 고려한 기능을 포함합니다." data-en="Includes in-app purchases, ads, settings, and restore flows for release-minded operation.">인앱 구매, 광고, 설정, 구매 복원 등 출시 이후 운영을 고려한 기능을 포함합니다.</span>
         </div>
       </div>
     </div>
@@ -968,46 +1161,69 @@
     <div class="dialog-inner">
       <div class="dialog-top">
         <div class="dialog-title-wrap">
-          <span class="app-icon kkiri-mini">ㄲㄹ</span>
+          <span class="app-icon kkiri-mini"><img src="./assets/kkirikkiri/kkirikkiri_icon_512.png" alt="끼리끼리 icon" /></span>
           <span>
             <h3>끼리끼리</h3>
-            <p data-ko="가치관 기반 소셜 서비스" data-en="Value-compatibility social service">가치관 기반 소셜 서비스</p>
+            <p data-ko="가치관 기반 소셜 서비스 · 출시 준비 중" data-en="Value-compatibility social service · Coming soon">가치관 기반 소셜 서비스 · 출시 준비 중</p>
           </span>
         </div>
         <button class="close-btn" type="button" aria-label="Close">×</button>
       </div>
 
-      <div class="coming-panel">
-        <strong data-ko="현재 출시 준비 중입니다." data-en="Currently preparing for release.">현재 출시 준비 중입니다.</strong>
-        <span data-ko="개발 중인 서비스이므로 정식 스토어 스크린샷과 다운로드 링크는 출시 준비가 완료된 뒤 추가할 예정입니다."
-              data-en="The service is still in development, so official store screenshots and download links will be added when release preparation is complete.">
-          개발 중인 서비스이므로 정식 스토어 스크린샷과 다운로드 링크는 출시 준비가 완료된 뒤 추가할 예정입니다.
-        </span>
+      <div class="detail-hero">
+        <div class="detail-copy-card">
+          <h4 data-ko="친구와 같은 질문에 답하며 서로의 생각을 알아가는 서비스" data-en="A social service for discovering how friends think">
+            친구와 같은 질문에 답하며 서로의 생각을 알아가는 서비스
+          </h4>
+          <p data-ko="끼리끼리는 데릭투스카이(Derrick2Sky)가 개발·운영하는 가치관 기반 소셜 서비스입니다. 처음에는 기본 가치관 질문으로 시작하고, 이후 매일 공개되는 질문에 답하면서 친구와의 공통점과 차이점이 계속 쌓입니다."
+             data-en="KkiriKkiri is a value-compatibility social service developed and operated by Derrick2Sky. Users begin with core value questions, then continue with daily prompts that gradually reveal similarities and differences with friends.">
+            끼리끼리는 데릭투스카이(Derrick2Sky)가 개발·운영하는 가치관 기반 소셜 서비스입니다. 처음에는 기본 가치관 질문으로 시작하고, 이후 매일 공개되는 질문에 답하면서 친구와의 공통점과 차이점이 계속 쌓입니다.
+          </p>
+          <p data-ko="궁합은 한 번의 테스트 결과로 고정되지 않고, 두 사람이 함께 답한 최신 질문을 반영하면서 계속 변하도록 설계하고 있습니다. 월간 리포트에서는 친구와 잘 맞는 주제와 다른 주제, 대표 답변, 대화에 도움이 되는 내용을 보여주는 방향으로 개발 중입니다."
+             data-en="Compatibility is designed to evolve rather than remain a one-time test result, using recent questions both friends have answered. Monthly reports are being developed to highlight aligned topics, differences, representative answers, and practical communication insights.">
+            궁합은 한 번의 테스트 결과로 고정되지 않고, 두 사람이 함께 답한 최신 질문을 반영하면서 계속 변하도록 설계하고 있습니다. 월간 리포트에서는 친구와 잘 맞는 주제와 다른 주제, 대표 답변, 대화에 도움이 되는 내용을 보여주는 방향으로 개발 중입니다.
+          </p>
+        </div>
+
+        <div class="modal-preview placeholder">
+          <div class="coming-empty">
+            <div>
+              <strong data-ko="출시 준비 중" data-en="Coming soon">출시 준비 중</strong>
+              <span data-ko="정식 UI 스크린샷은 출시 준비 후 공개됩니다." data-en="Official UI screenshots will be published as release preparation progresses.">정식 UI 스크린샷은 출시 준비 후 공개됩니다.</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="dialog-copy">
-        <p data-ko="끼리끼리는 Derrick2Sky가 개발·운영하는 가치관 기반 소셜 서비스입니다. 사용자는 기본 가치관 질문과 매일 공개되는 질문에 답하고, 친구와의 공통 답변을 바탕으로 서로의 생각이 얼마나 비슷하고 다른지 확인할 수 있습니다."
-           data-en="KkiriKkiri is a value-compatibility social service developed and operated by Derrick2Sky. Users answer core value questions and daily prompts, then compare shared responses with friends to understand where their perspectives align or differ.">
-          끼리끼리는 Derrick2Sky가 개발·운영하는 가치관 기반 소셜 서비스입니다. 사용자는 기본 가치관 질문과 매일 공개되는 질문에 답하고, 친구와의 공통 답변을 바탕으로 서로의 생각이 얼마나 비슷하고 다른지 확인할 수 있습니다.
-        </p>
-        <p data-ko="서비스는 친구 간 궁합을 한 번의 테스트 결과로 고정하지 않고, 시간이 지나며 쌓이는 답변을 통해 계속 변화하는 관계 지표로 보여주는 것을 목표로 합니다."
-           data-en="Rather than treating compatibility as a one-time test result, the service is designed to show a relationship signal that evolves as friends continue answering questions over time.">
-          서비스는 친구 간 궁합을 한 번의 테스트 결과로 고정하지 않고, 시간이 지나며 쌓이는 답변을 통해 계속 변화하는 관계 지표로 보여주는 것을 목표로 합니다.
-        </p>
+      <div class="screenshot-section">
+        <div class="screenshot-head">
+          <h4 data-ko="앱 화면" data-en="App screens">앱 화면</h4>
+          <span data-ko="현재 개발 중" data-en="In development">현재 개발 중</span>
+        </div>
+        <div class="screenshots">
+          <div class="screen-card placeholder"><strong data-ko="출시 준비 중" data-en="Coming soon">출시 준비 중</strong></div>
+          <div class="screen-card placeholder"><strong data-ko="출시 준비 중" data-en="Coming soon">출시 준비 중</strong></div>
+          <div class="screen-card placeholder"><strong data-ko="출시 준비 중" data-en="Coming soon">출시 준비 중</strong></div>
+          <div class="screen-card placeholder"><strong data-ko="출시 준비 중" data-en="Coming soon">출시 준비 중</strong></div>
+        </div>
       </div>
 
-      <div class="dialog-grid">
-        <div class="detail-chip">
-          <strong data-ko="기본 가치관" data-en="Core Values">기본 가치관</strong>
-          <span data-ko="처음 시작할 때 답하는 가치관 질문" data-en="Initial questions that establish a starting profile">처음 시작할 때 답하는 가치관 질문</span>
+      <div class="feature-list">
+        <div class="feature-row">
+          <strong data-ko="기본 가치관" data-en="Core values">기본 가치관</strong>
+          <span data-ko="가입 후 기본 질문을 통해 친구 궁합의 초기 기준을 만듭니다." data-en="Core questions establish an initial basis for compatibility with friends.">가입 후 기본 질문을 통해 친구 궁합의 초기 기준을 만듭니다.</span>
         </div>
-        <div class="detail-chip">
-          <strong data-ko="매일 질문" data-en="Daily Questions">매일 질문</strong>
-          <span data-ko="매일 하나씩 쌓이는 새로운 질문" data-en="One new prompt added each day">매일 하나씩 쌓이는 새로운 질문</span>
+        <div class="feature-row">
+          <strong data-ko="매일 질문" data-en="Daily questions">매일 질문</strong>
+          <span data-ko="매일 하나의 새로운 질문에 답하고, 친구가 같은 질문에 답하면 두 사람의 궁합에 반영됩니다." data-en="A new prompt is answered each day, and shared answers contribute to compatibility once both friends have responded.">매일 하나의 새로운 질문에 답하고, 친구가 같은 질문에 답하면 두 사람의 궁합에 반영됩니다.</span>
         </div>
-        <div class="detail-chip">
-          <strong data-ko="친구 궁합" data-en="Friend Compatibility">친구 궁합</strong>
-          <span data-ko="공통 답변을 기반으로 변화하는 궁합" data-en="Compatibility that evolves from shared answers">공통 답변을 기반으로 변화하는 궁합</span>
+        <div class="feature-row">
+          <strong data-ko="변화하는 궁합" data-en="Evolving compatibility">변화하는 궁합</strong>
+          <span data-ko="공통 답변이 쌓일수록 최근 답변의 비중이 커져 현재의 관계를 더 잘 반영하도록 설계합니다." data-en="As shared answers accumulate, recent responses carry more weight so the score better reflects the current relationship.">공통 답변이 쌓일수록 최근 답변의 비중이 커져 현재의 관계를 더 잘 반영하도록 설계합니다.</span>
+        </div>
+        <div class="feature-row">
+          <strong data-ko="월간 리포트" data-en="Monthly report">월간 리포트</strong>
+          <span data-ko="친구와의 공통점·차이점, 대표 답변과 커뮤니케이션에 도움이 되는 내용을 정리하는 기능을 준비하고 있습니다." data-en="A planned report summarizes similarities, differences, representative answers, and practical communication insights.">친구와의 공통점·차이점, 대표 답변과 커뮤니케이션에 도움이 되는 내용을 정리하는 기능을 준비하고 있습니다.</span>
         </div>
       </div>
     </div>
