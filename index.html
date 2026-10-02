@@ -464,8 +464,9 @@
     .app-visual.keycap img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center;
+      padding: 14px;
     }
 
     .app-visual.kkiri {
@@ -740,12 +741,18 @@
       overflow: hidden;
       background: #eef0f4;
       border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      padding: 14px;
     }
 
     .modal-preview img {
+      display: block;
       width: 100%;
-      height: 250px;
-      object-fit: cover;
+      height: auto;
+      max-height: 440px;
+      object-fit: contain;
+      border-radius: 14px;
     }
 
     .modal-preview.placeholder {
@@ -791,23 +798,25 @@
     .screen-card {
       position: relative;
       overflow: hidden;
-      min-height: 240px;
+      aspect-ratio: 9 / 20;
       border-radius: 18px;
       background: #f2f3f6;
       border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      padding: 8px;
     }
 
     .screen-card img {
+      display: block;
       width: 100%;
-      height: 240px;
-      object-fit: cover;
+      height: 100%;
+      object-fit: contain;
       object-position: center;
     }
 
-    .screen-card.contain img {
-      object-fit: contain;
-      padding: 8px;
-      background: #f3f4f7;
+    .screen-card.splash {
+      aspect-ratio: 853 / 1844;
     }
 
     .screen-card.placeholder {
@@ -845,6 +854,86 @@
       color: var(--muted);
       font-size: .9rem;
       line-height: 1.65;
+    }
+
+
+    .store-section {
+      margin-top: 26px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    .store-section h4 {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 720;
+      letter-spacing: -.02em;
+    }
+
+    .store-section p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: .86rem;
+      line-height: 1.6;
+    }
+
+    .store-links {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .store-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      min-height: 62px;
+      padding: 13px 16px;
+      border-radius: 16px;
+      background: #17191e;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.06);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .store-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(20,22,28,.14);
+    }
+
+    .store-link small,
+    .store-link strong {
+      display: block;
+    }
+
+    .store-link small {
+      color: rgba(255,255,255,.62);
+      font-size: .72rem;
+      margin-bottom: 2px;
+    }
+
+    .store-link strong {
+      font-size: .95rem;
+      font-weight: 700;
+    }
+
+    .store-link .arrow {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.72);
+    }
+
+    .store-link.disabled {
+      background: #f4f5f7;
+      color: #878b95;
+      border-color: var(--line);
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .store-link.disabled small {
+      color: #a0a3ab;
     }
 
     @media (max-width: 900px) {
@@ -886,8 +975,7 @@
       .dialog-grid { grid-template-columns: 1fr; }
       .dialog-inner { padding: 22px; }
       .screenshots { grid-template-columns: 1fr 1fr; }
-      .screen-card,
-      .screen-card img { min-height: 190px; height: 190px; }
+      .store-links { grid-template-columns: 1fr; }
       .feature-row { grid-template-columns: 1fr; gap: 6px; }
 
       .footer {
@@ -980,14 +1068,14 @@
 
         <div class="company-grid">
           <div class="company-copy">
-            <h3 data-ko="아이디어에서 출시까지" data-en="From idea to release">아이디어에서 출시까지</h3>
-            <p data-ko="Derrick2Sky는 모바일 앱과 인터랙션 중심의 디지털 제품을 개발합니다. 기능 구조, 사용자 흐름, 상태 저장, 미디어 처리, 결제와 운영에 필요한 실제 구현까지 한 제품 안에서 연결하는 방식으로 작업합니다."
-               data-en="Derrick2Sky builds mobile apps and interaction-focused digital products. We connect product structure, user flow, state persistence, media handling, payments, and operational details into one coherent implementation.">
-              Derrick2Sky는 모바일 앱과 인터랙션 중심의 디지털 제품을 개발합니다. 기능 구조, 사용자 흐름, 상태 저장, 미디어 처리, 결제와 운영에 필요한 실제 구현까지 한 제품 안에서 연결하는 방식으로 작업합니다.
+            <h3 data-ko="작은 아이디어를, 오래 쓰이는 제품으로" data-en="Small ideas, built into products that last">작은 아이디어를, 오래 쓰이는 제품으로</h3>
+            <p data-ko="데릭투스카이(Derrick2Sky)는 모바일 앱을 중심으로 기획, 인터랙션, 구현을 하나의 흐름으로 연결하는 소프트웨어 스튜디오입니다. 보기 좋은 화면에 그치지 않고, 실제 사용 과정이 자연스럽고 운영 가능한 제품을 만드는 것을 중요하게 생각합니다."
+               data-en="Derrick2Sky is an independent software studio focused on mobile products. We connect product thinking, interaction design, and implementation into one coherent flow, with an emphasis on products that are not only polished, but genuinely usable and ready to operate.">
+              데릭투스카이(Derrick2Sky)는 모바일 앱을 중심으로 기획, 인터랙션, 구현을 하나의 흐름으로 연결하는 소프트웨어 스튜디오입니다. 보기 좋은 화면에 그치지 않고, 실제 사용 과정이 자연스럽고 운영 가능한 제품을 만드는 것을 중요하게 생각합니다.
             </p>
-            <p data-ko="현재 KeyCap KeyRing과 가치관 기반 소셜 서비스 끼리끼리를 포함한 여러 앱을 개발하고 있습니다."
-               data-en="Current work includes KeyCap KeyRing and KkiriKkiri, a value-compatibility social service, along with other mobile product experiments.">
-              현재 KeyCap KeyRing과 가치관 기반 소셜 서비스 끼리끼리를 포함한 여러 앱을 개발하고 있습니다.
+            <p data-ko="현재 KeyCap KeyRing과 가치관 기반 소셜 서비스 끼리끼리를 직접 개발·운영하고 있습니다. 각 제품은 아이디어 단계부터 출시 이후의 사용 경험까지 하나의 브랜드로 완성하는 것을 목표로 합니다."
+               data-en="We currently develop and operate KeyCap KeyRing and KkiriKkiri, a value-compatibility social service. Each product is shaped as a complete brand, from the initial idea through the experience after release.">
+              현재 KeyCap KeyRing과 가치관 기반 소셜 서비스 끼리끼리를 직접 개발·운영하고 있습니다. 각 제품은 아이디어 단계부터 출시 이후의 사용 경험까지 하나의 브랜드로 완성하는 것을 목표로 합니다.
             </p>
           </div>
 
@@ -1134,9 +1222,9 @@
         </div>
         <div class="screenshots">
           <div class="screen-card"><img src="./assets/keycap-keyring/phone-main.png" alt="KeyCap KeyRing main screen" /></div>
-          <div class="screen-card"><img src="./assets/keycap-keyring/phone-keycap.png" alt="KeyCap KeyRing keycap screen" /></div>
-          <div class="screen-card"><img src="./assets/keycap-keyring/phone-switch.png" alt="KeyCap KeyRing switch screen" /></div>
-          <div class="screen-card contain"><img src="./assets/keycap-keyring/splash.png" alt="KeyCap KeyRing splash screen" /></div>
+          <div class="screen-card"><img src="./assets/keycap-keyring/phone-keycap.png" alt="KeyCap KeyRing keycap screen 1080 by 2400" /></div>
+          <div class="screen-card"><img src="./assets/keycap-keyring/phone-switch.png" alt="KeyCap KeyRing switch screen 1080 by 2400" /></div>
+          <div class="screen-card splash"><img src="./assets/keycap-keyring/splash.png" alt="KeyCap KeyRing splash screen 853 by 1844" /></div>
         </div>
       </div>
 
@@ -1154,6 +1242,19 @@
           <span data-ko="인앱 구매, 광고, 설정, 구매 복원 등 출시 이후 운영을 고려한 기능을 포함합니다." data-en="Includes in-app purchases, ads, settings, and restore flows for release-minded operation.">인앱 구매, 광고, 설정, 구매 복원 등 출시 이후 운영을 고려한 기능을 포함합니다.</span>
         </div>
       </div>
+
+      <section class="store-section" aria-label="Store links">
+        <h4 data-ko="스토어에서 만나보세요" data-en="Available on the stores">스토어에서 만나보세요</h4>
+        <p data-ko="KeyCap KeyRing은 Google Play와 App Store에서 확인할 수 있습니다." data-en="KeyCap KeyRing is available on Google Play and the App Store.">KeyCap KeyRing은 Google Play와 App Store에서 확인할 수 있습니다.</p>
+        <div class="store-links">
+          <a class="store-link" href="https://play.google.com/store/apps/details?id=com.derrick2sky.keycap_keyring&amp;hl=ko" target="_blank" rel="noopener noreferrer">
+            <span><small>GET IT ON</small><strong>Google Play</strong></span><span class="arrow">↗</span>
+          </a>
+          <a class="store-link" href="https://apps.apple.com/kr/app/%ED%82%A4%EC%BA%A1%ED%82%A4%EB%A7%81/id6772980367" target="_blank" rel="noopener noreferrer">
+            <span><small>DOWNLOAD ON THE</small><strong>App Store</strong></span><span class="arrow">↗</span>
+          </a>
+        </div>
+      </section>
     </div>
   </dialog>
 
@@ -1226,6 +1327,15 @@
           <span data-ko="친구와의 공통점·차이점, 대표 답변과 커뮤니케이션에 도움이 되는 내용을 정리하는 기능을 준비하고 있습니다." data-en="A planned report summarizes similarities, differences, representative answers, and practical communication insights.">친구와의 공통점·차이점, 대표 답변과 커뮤니케이션에 도움이 되는 내용을 정리하는 기능을 준비하고 있습니다.</span>
         </div>
       </div>
+
+      <section class="store-section" aria-label="Store links">
+        <h4 data-ko="스토어 링크" data-en="Store links">스토어 링크</h4>
+        <p data-ko="끼리끼리는 현재 출시 준비 중이며, 정식 출시 후 스토어 링크를 공개할 예정입니다." data-en="KkiriKkiri is currently preparing for release. Store links will be added when the app launches.">끼리끼리는 현재 출시 준비 중이며, 정식 출시 후 스토어 링크를 공개할 예정입니다.</p>
+        <div class="store-links">
+          <div class="store-link disabled"><span><small>COMING SOON</small><strong>Google Play</strong></span><span class="arrow">—</span></div>
+          <div class="store-link disabled"><span><small>COMING SOON</small><strong>App Store</strong></span><span class="arrow">—</span></div>
+        </div>
+      </section>
     </div>
   </dialog>
 
