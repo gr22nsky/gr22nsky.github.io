@@ -3,1379 +3,602 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Derrick2Sky — independent software studio building focused mobile products." />
-  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#f7f8fb" />
+  <meta name="description" content="Derrick2Sky — 모바일 앱과 디지털 경험을 만드는 독립 소프트웨어 스튜디오. KeyCap KeyRing, 끼리끼리." />
   <link rel="icon" type="image/png" href="./assets/profile/icon.png" />
-  <title>Derrick2Sky | Software Studio</title>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <title>Derrick2Sky — Independent Software Studio</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" />
   <style>
     :root {
-      --bg: #f6f7fb;
-      --surface: rgba(255, 255, 255, 0.86);
-      --surface-strong: #ffffff;
-      --text: #16181d;
-      --muted: #6c707a;
-      --line: rgba(22, 24, 29, 0.09);
-      --accent: #ff6fa8;
-      --accent-2: #8f82ff;
-      --accent-soft: rgba(255, 111, 168, 0.11);
-      --shadow: 0 24px 70px rgba(27, 30, 40, 0.11);
-      --shadow-soft: 0 16px 40px rgba(27, 30, 40, 0.07);
-      --max: 1160px;
-      --radius-xl: 36px;
-      --radius-lg: 26px;
+      color-scheme: light;
+      --ink: #171925;
+      --muted: #6e7280;
+      --line: #e6e8ef;
+      --paper: #f7f8fb;
+      --accent: #7658ea;
+      --max: 1240px;
+      --radius: 28px;
     }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 28px; }
     body {
       margin: 0;
+      color: var(--ink);
+      background: var(--paper);
       font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 12% 0%, rgba(255, 202, 224, 0.5), transparent 24%),
-        radial-gradient(circle at 88% 9%, rgba(182, 174, 255, 0.32), transparent 22%),
-        linear-gradient(180deg, #fffafd 0%, #f6f7fb 42%, #ffffff 100%);
+      -webkit-font-smoothing: antialiased;
     }
-
     button, a { font: inherit; }
+    button { cursor: pointer; }
     a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-
-    .shell {
-      width: min(calc(100% - 32px), var(--max));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 22px 0 18px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
-
-    .brand img {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      object-fit: cover;
-      box-shadow: 0 10px 26px rgba(255, 111, 168, 0.2);
-    }
-
-    .brand strong,
-    .brand span { display: block; line-height: 1.2; }
-
-    .brand span {
-      color: var(--muted);
-      font-size: 0.88rem;
-      margin-top: 2px;
-    }
-
-    .top-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .contact {
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .lang-toggle {
-      display: inline-flex;
-      gap: 4px;
-      padding: 4px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.8);
-      border: 1px solid var(--line);
-      box-shadow: 0 8px 24px rgba(20,22,28,0.05);
-    }
-
-    .lang-toggle button {
-      border: 0;
-      background: transparent;
-      color: var(--muted);
-      min-width: 42px;
-      height: 34px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 0.82rem;
-    }
-
-    .lang-toggle button.active {
-      color: #fff;
-      background: #1c1e24;
-    }
+    img { display: block; max-width: 100%; height: auto; }
+    button:focus-visible, a:focus-visible { outline: 3px solid #a58aff; outline-offset: 4px; }
+    .container { width: min(var(--max), calc(100% - 56px)); margin-inline: auto; }
+    .site-header { position: relative; z-index: 5; background: rgba(247,248,251,.94); }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 22px; min-height: 94px; }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand img { width: 45px; height: 45px; border-radius: 13px; object-fit: cover; }
+    .brand strong { display: block; font-size: 1.15rem; line-height: 1.2; font-weight: 790; letter-spacing: -.035em; }
+    .brand small { display: block; margin-top: 2px; color: #797d8b; font-size: .72rem; letter-spacing: .06em; font-weight: 650; }
+    .top-right { display: flex; align-items: center; gap: 26px; }
+    .nav-links { display: flex; gap: 29px; align-items: center; }
+    .nav-links a { color: #5b5e6c; font-size: .88rem; font-weight: 680; transition: color .2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .header-contact { display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border: 1px solid #e0e2e9; border-radius: 100px; background: #fff; font-size: .8rem; font-weight: 740; box-shadow: 0 4px 16px rgba(29,34,55,.035); }
+    .header-contact svg { width: 15px; height: 15px; }
+    .lang-switch { display: flex; gap: 2px; padding: 3px; border-radius: 100px; background: #e9eaf0; flex-shrink: 0; }
+    .lang-switch button { min-width: 35px; padding: 7px 8px; border: 0; border-radius: 100px; background: transparent; color: #8b8e9b; font-size: .72rem; font-weight: 800; }
+    .lang-switch button.active { color: #242635; background: #fff; box-shadow: 0 2px 8px rgba(20,24,45,.1); }
 
     .hero {
-      position: relative;
-      overflow: hidden;
-      border-radius: var(--radius-xl);
-      min-height: 520px;
-      background:
-        radial-gradient(circle at 80% 18%, rgba(255,255,255,0.18), transparent 22%),
-        linear-gradient(135deg, #171920 0%, #24232f 48%, #3f3147 100%);
-      box-shadow: var(--shadow);
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 440px;
-      height: 440px;
-      border-radius: 50%;
-      right: -110px;
-      top: -120px;
-      background: linear-gradient(135deg, rgba(255,111,168,0.68), rgba(143,130,255,0.55));
-      opacity: 0.58;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-      background-size: 34px 34px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,.75), transparent 92%);
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .8fr);
-      gap: 34px;
-      align-items: center;
-      min-height: 520px;
-      padding: 46px 50px;
-    }
-
-    .hero-copy { color: #fff; max-width: 650px; }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      min-height: 38px;
-      padding: 0 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.14);
-      color: rgba(255,255,255,.84);
-      font-size: .9rem;
-      backdrop-filter: blur(10px);
-    }
-
-    .eyebrow-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #ff74ab, #a58cff);
-      box-shadow: 0 0 16px rgba(255,116,171,.8);
-    }
-
-    h1 {
-      margin: 20px 0 0;
-      max-width: 650px;
-      font-size: clamp(2.45rem, 4.6vw, 3.95rem);
-      font-weight: 720;
-      line-height: 1.08;
-      letter-spacing: -0.045em;
-      text-wrap: balance;
-    }
-
-    .lead {
-      margin: 20px 0 0;
-      max-width: 590px;
-      color: rgba(255,255,255,.72);
-      font-size: 1rem;
-      font-weight: 430;
-      line-height: 1.78;
-      letter-spacing: -0.012em;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 0 18px;
-      border-radius: 999px;
-      font-size: .93rem;
-      font-weight: 700;
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-
-    .button:hover { transform: translateY(-2px); }
-    .button-primary {
-      color: #fff;
-      background: linear-gradient(135deg, #ff74aa, #9b86ff);
-      box-shadow: 0 16px 34px rgba(255,111,168,.22);
-    }
-    .button-secondary {
-      color: #fff;
-      background: rgba(255,255,255,.09);
-      border: 1px solid rgba(255,255,255,.15);
-      backdrop-filter: blur(10px);
-    }
-
-    .dev-panel {
-      position: relative;
-      padding: 22px;
-      border-radius: 28px;
-      background: rgba(10,11,16,.52);
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 28px 60px rgba(0,0,0,.22);
-      backdrop-filter: blur(15px);
-    }
-
-    .dev-window {
-      overflow: hidden;
-      border-radius: 20px;
-      background: #101217;
-      border: 1px solid rgba(255,255,255,.08);
-    }
-
-    .window-top {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      height: 38px;
-      padding: 0 14px;
-      border-bottom: 1px solid rgba(255,255,255,.07);
-    }
-
-    .window-top i {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.26);
-    }
-
-    .dev-body {
-      display: grid;
-      grid-template-columns: 70px 1fr;
-      gap: 18px;
-      padding: 22px;
-      align-items: center;
-    }
-
-    .dev-body img {
-      width: 70px;
-      height: 70px;
-      border-radius: 22px;
-      object-fit: cover;
-      box-shadow: 0 16px 28px rgba(255,111,168,.2);
-    }
-
-    .code-lines {
-      display: grid;
-      gap: 10px;
-    }
-
-    .code-line {
-      height: 9px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.12);
-    }
-
-    .code-line:nth-child(1) { width: 75%; background: linear-gradient(90deg, rgba(255,111,168,.65), rgba(255,255,255,.12)); }
-    .code-line:nth-child(2) { width: 92%; }
-    .code-line:nth-child(3) { width: 58%; background: linear-gradient(90deg, rgba(143,130,255,.7), rgba(255,255,255,.12)); }
-    .code-line:nth-child(4) { width: 82%; }
-    .code-line:nth-child(5) { width: 48%; }
-
-    .dev-labels {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .dev-labels span {
-      padding: 10px 8px;
-      border-radius: 13px;
-      text-align: center;
-      color: rgba(255,255,255,.72);
-      background: rgba(255,255,255,.06);
-      font-size: .78rem;
-      border: 1px solid rgba(255,255,255,.07);
-    }
-
-    main {
-      display: grid;
-      gap: 24px;
-      margin-top: 24px;
-      padding-bottom: 36px;
-    }
-
-    .section-card {
-      padding: 30px;
-      border-radius: var(--radius-lg);
-      background: var(--surface);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow-soft);
-      backdrop-filter: blur(14px);
-    }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 18px;
-      margin-bottom: 24px;
-    }
-
-    .kicker {
-      display: inline-block;
-      color: var(--accent);
-      font-size: .8rem;
-      font-weight: 800;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    h2 {
-      margin: 8px 0 0;
-      font-size: clamp(1.8rem, 3vw, 2.55rem);
-      font-weight: 720;
-      line-height: 1.12;
-      letter-spacing: -.035em;
-    }
-
-    .section-sub {
-      margin: 10px 0 0;
-      max-width: 720px;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .company-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr);
-      gap: 18px;
-      margin-top: 24px;
-    }
-
-    .company-copy,
-    .business-card {
-      padding: 24px;
-      border-radius: 22px;
-      background: #fff;
-      border: 1px solid var(--line);
-    }
-
-    .company-copy h3,
-    .business-card h3 {
-      margin: 0;
-      font-size: 1.18rem;
-    }
-
-    .company-copy p {
-      margin: 14px 0 0;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .business-list {
-      display: grid;
-      gap: 0;
-      margin: 16px 0 0;
-    }
-
-    .business-row {
-      display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 12px;
-      padding: 12px 0;
-      border-top: 1px solid var(--line);
-      font-size: .93rem;
-    }
-
-    .business-row span:first-child { color: var(--muted); }
-
-    .apps-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 24px;
-    }
-
-    .app-card {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      min-height: 430px;
-      width: 100%;
-      padding: 0;
-      overflow: hidden;
-      text-align: left;
-      color: inherit;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      cursor: pointer;
-      box-shadow: 0 12px 32px rgba(24,26,33,.05);
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-    }
-
-    .app-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 22px 45px rgba(24,26,33,.1);
-      border-color: rgba(255,111,168,.2);
-    }
-
-    .app-visual {
-      position: relative;
-      display: grid;
-      place-items: center;
-      height: 260px;
-      overflow: hidden;
-      background: #f3f4f7;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .app-visual.keycap {
-      background: #eceef3;
-    }
-
-    .app-visual.keycap img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-      padding: 14px;
-    }
-
-    .app-visual.kkiri {
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.96), rgba(247,248,252,.96)),
-        radial-gradient(circle at 15% 20%, rgba(255,208,218,.45), transparent 25%),
-        radial-gradient(circle at 85% 85%, rgba(209,222,255,.5), transparent 28%);
-    }
-
-    .coming-empty {
-      display: grid;
-      place-items: center;
-      width: calc(100% - 42px);
-      height: calc(100% - 42px);
-      border: 1px dashed rgba(44, 48, 60, .18);
-      border-radius: 22px;
-      background: rgba(255,255,255,.52);
-      color: #8a8e98;
-      text-align: center;
-    }
-
-    .coming-empty strong {
-      display: block;
-      color: #555a66;
-      font-size: .98rem;
-      font-weight: 720;
-      letter-spacing: -.015em;
-    }
-
-    .coming-empty span {
-      display: block;
-      margin-top: 7px;
-      font-size: .8rem;
-      line-height: 1.5;
-    }
-
-    .status-badge {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      padding: 8px 11px;
-      border-radius: 999px;
-      color: #30333a;
-      background: rgba(255,255,255,.88);
-      font-size: .76rem;
-      font-weight: 800;
-    }
-
-    .app-card-body {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-      padding: 22px;
-    }
-
-    .app-title-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .app-icon {
-      display: grid;
-      place-items: center;
-      width: 52px;
-      height: 52px;
-      flex: 0 0 auto;
-      border-radius: 16px;
-      overflow: hidden;
-      background: #f5f5f8;
-      box-shadow: 0 10px 22px rgba(20,22,28,.08);
-    }
-
-    .app-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .app-icon.kkiri-mini {
-      background: #f7f7f9;
-    }
-
-    .app-icon.kkiri-mini img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .app-card h3 {
-      margin: 0;
-      font-size: 1.35rem;
-      line-height: 1.2;
-    }
-
-    .platform {
-      display: block;
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: .83rem;
-    }
-
-    .app-summary {
-      margin: 16px 0 0;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: .94rem;
-    }
-
-    .app-more {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      margin-top: auto;
-      padding-top: 18px;
-      font-size: .9rem;
-      font-weight: 800;
-    }
-
-    .app-more::after {
-      content: "→";
-      transition: transform .18s ease;
-    }
-
-    .app-card:hover .app-more::after { transform: translateX(4px); }
-
-    .footer {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 20px;
-      align-items: end;
-      padding: 14px 0 42px;
-      color: var(--muted);
-      font-size: .9rem;
-    }
-
-    .footer strong {
-      display: block;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-
-    dialog {
-      width: min(calc(100% - 28px), 980px);
-      max-height: min(90vh, 980px);
-      padding: 0;
-      border: 0;
-      border-radius: 28px;
-      overflow: auto;
-      color: var(--text);
-      background: #fff;
-      box-shadow: 0 34px 100px rgba(20,22,30,.28);
-    }
-
-    dialog::backdrop {
-      background: rgba(20,22,28,.55);
-      backdrop-filter: blur(7px);
-    }
-
-    .dialog-inner { padding: 28px; }
-
-    .dialog-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: start;
-    }
-
-    .dialog-title-wrap {
-      display: flex;
-      gap: 14px;
-      align-items: center;
-    }
-
-    .dialog-title-wrap .app-icon { width: 58px; height: 58px; }
-    .dialog-title-wrap h3 { margin: 0; font-size: 1.55rem; }
-    .dialog-title-wrap p { margin: 4px 0 0; color: var(--muted); font-size: .9rem; }
-
-    .close-btn {
-      width: 40px;
-      height: 40px;
-      flex: 0 0 auto;
-      border: 1px solid var(--line);
-      border-radius: 50%;
-      background: #fff;
-      cursor: pointer;
-      font-size: 1.2rem;
-    }
-
-    .dialog-copy {
-      margin-top: 24px;
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    .dialog-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 22px;
-    }
-
-    .detail-chip {
-      padding: 14px;
-      border-radius: 16px;
-      background: #f7f7fa;
-      border: 1px solid var(--line);
-    }
-
-    .detail-chip strong {
-      display: block;
-      font-size: .88rem;
-    }
-
-    .detail-chip span {
-      display: block;
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: .8rem;
-      line-height: 1.5;
-    }
-
-    .coming-panel {
-      margin-top: 24px;
-      padding: 18px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(255,214,221,.55), rgba(215,228,255,.62));
-    }
-
-    .coming-panel strong { display: block; }
-    .coming-panel span {
-      display: block;
-      margin-top: 5px;
-      color: #666b76;
-      line-height: 1.65;
-      font-size: .9rem;
-    }
-
-
-    .detail-hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(280px, .92fr);
-      gap: 22px;
-      margin-top: 26px;
-      align-items: start;
-    }
-
-    .detail-copy-card {
-      padding: 22px;
-      border-radius: 20px;
-      background: #f8f8fb;
-      border: 1px solid var(--line);
-    }
-
-    .detail-copy-card h4 {
-      margin: 0;
-      font-size: 1.02rem;
-      font-weight: 720;
-      letter-spacing: -.02em;
-    }
-
-    .detail-copy-card p {
-      margin: 10px 0 0;
-      color: var(--muted);
-      line-height: 1.78;
-      font-size: .92rem;
-    }
-
-    .modal-preview {
-      min-height: 250px;
-      border-radius: 22px;
-      overflow: hidden;
-      background: #eef0f4;
-      border: 1px solid var(--line);
-      display: grid;
-      place-items: center;
-      padding: 14px;
-    }
-
-    .modal-preview img {
-      display: block;
-      width: 100%;
-      height: auto;
-      max-height: 440px;
-      object-fit: contain;
-      border-radius: 14px;
-    }
-
-    .modal-preview.placeholder {
-      display: grid;
-      place-items: center;
-      background: linear-gradient(145deg, #fafafa, #f1f3f8);
-    }
-
-    .modal-preview.placeholder .coming-empty {
-      width: calc(100% - 30px);
-      height: calc(100% - 30px);
-    }
-
-    .screenshot-section {
-      margin-top: 26px;
-    }
-
-    .screenshot-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-
-    .screenshot-head h4 {
-      margin: 0;
-      font-size: 1.05rem;
-      font-weight: 720;
-    }
-
-    .screenshot-head span {
-      color: var(--muted);
-      font-size: .8rem;
-    }
-
-    .screenshots {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .screen-card {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 9 / 20;
-      border-radius: 18px;
-      background: #f2f3f6;
-      border: 1px solid var(--line);
-      display: grid;
-      place-items: center;
-      padding: 8px;
-    }
-
-    .screen-card img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-
-    .screen-card.splash {
-      aspect-ratio: 853 / 1844;
-    }
-
-    .screen-card.placeholder {
-      display: grid;
-      place-items: center;
-      color: var(--muted);
-      background: linear-gradient(145deg, #fafafa, #f2f3f7);
-    }
-
-    .screen-card.placeholder strong {
-      font-size: .86rem;
-      font-weight: 700;
-    }
-
-    .feature-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 22px;
-    }
-
-    .feature-row {
-      display: grid;
-      grid-template-columns: 150px 1fr;
-      gap: 18px;
-      padding: 14px 0;
-      border-top: 1px solid var(--line);
-    }
-
-    .feature-row strong {
-      font-size: .88rem;
-      font-weight: 720;
-    }
-
-    .feature-row span {
-      color: var(--muted);
-      font-size: .9rem;
-      line-height: 1.65;
-    }
-
-
-    .store-section {
-      margin-top: 26px;
-      padding-top: 22px;
-      border-top: 1px solid var(--line);
-    }
-
-    .store-section h4 {
-      margin: 0;
-      font-size: 1.05rem;
-      font-weight: 720;
-      letter-spacing: -.02em;
-    }
-
-    .store-section p {
-      margin: 7px 0 0;
-      color: var(--muted);
-      font-size: .86rem;
-      line-height: 1.6;
-    }
-
-    .store-links {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .store-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      min-height: 62px;
-      padding: 13px 16px;
-      border-radius: 16px;
-      background: #17191e;
-      color: #fff;
-      border: 1px solid rgba(255,255,255,.06);
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-
-    .store-link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 28px rgba(20,22,28,.14);
-    }
-
-    .store-link small,
-    .store-link strong {
-      display: block;
-    }
-
-    .store-link small {
-      color: rgba(255,255,255,.62);
-      font-size: .72rem;
-      margin-bottom: 2px;
-    }
-
-    .store-link strong {
-      font-size: .95rem;
-      font-weight: 700;
-    }
-
-    .store-link .arrow {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,.72);
-    }
-
-    .store-link.disabled {
-      background: #f4f5f7;
-      color: #878b95;
-      border-color: var(--line);
-      cursor: default;
-      pointer-events: none;
-    }
-
-    .store-link.disabled small {
-      color: #a0a3ab;
-    }
-
-    @media (max-width: 900px) {
-      .hero-grid,
-      .company-grid,
-      .apps-grid,
-      .detail-hero { grid-template-columns: 1fr; }
-
-      .screenshots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-
-      .hero-grid {
-        padding: 34px;
-        min-height: auto;
-      }
-
-      .hero { min-height: auto; }
-      .app-card { min-height: 390px; }
-    }
-
-    @media (max-width: 680px) {
-      .shell { width: min(calc(100% - 20px), var(--max)); }
-
-      .topbar {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .top-actions {
-        width: 100%;
-        justify-content: space-between;
-      }
-
-      .hero-grid { padding: 24px; }
-      h1 { font-size: clamp(2.15rem, 10.5vw, 3.1rem); }
-
-      .section-card { padding: 22px; }
-      .section-head { align-items: start; flex-direction: column; }
-      .business-row { grid-template-columns: 92px 1fr; }
-      .dialog-grid { grid-template-columns: 1fr; }
-      .dialog-inner { padding: 22px; }
-      .screenshots { grid-template-columns: 1fr 1fr; }
-      .store-links { grid-template-columns: 1fr; }
-      .feature-row { grid-template-columns: 1fr; gap: 6px; }
-
-      .footer {
-        grid-template-columns: 1fr;
-        align-items: start;
-      }
+      min-height: 540px; position: relative; display: grid; grid-template-columns: 1.08fr .92fr;
+      overflow: hidden; border-radius: 34px; isolation: isolate;
+      background: radial-gradient(circle at 86% 16%, #45406f 0, transparent 38%),
+                  radial-gradient(circle at 48% 100%, #25234c 0, transparent 53%),
+                  linear-gradient(125deg, #101522, #181a31 64%, #2b2550);
+      box-shadow: 0 28px 80px rgba(30,30,54,.14);
+    }
+    .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .38;
+      background-image: linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg,rgba(255,255,255,.07) 1px, transparent 1px);
+      background-size: 54px 54px; mask-image: linear-gradient(120deg,transparent 20%,black 100%);
+    }
+    .hero::after { content: ""; position: absolute; z-index: -1; right: -130px; top: -180px; width: 600px; height: 600px; border: 1px solid rgba(211,196,255,.22); border-radius: 50%; box-shadow: 0 0 0 86px rgba(153,132,255,.028), 0 0 0 172px rgba(153,132,255,.025); }
+    .hero-content { position: relative; z-index: 2; align-self: center; padding: 68px 14px 70px 72px; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; color: #c8c7df; font-size: .76rem; letter-spacing: .15em; font-weight: 780; }
+    .pulse-dot { width: 8px; height: 8px; background: #b49aff; border-radius: 50%; box-shadow: 0 0 0 5px rgba(173,144,255,.13); }
+    .hero h1 { margin: 26px 0 0; color: #fff; font-size: clamp(2.7rem, 4.5vw, 4.5rem); line-height: 1.16; font-weight: 780; letter-spacing: -.067em; word-break: keep-all; }
+    .hero h1 span { display: block; }
+    .hero h1 .hero-gradient { color: #cfbcff; }
+    .hero-lead { max-width: 505px; margin: 24px 0 0; font-size: .98rem; line-height: 1.85; color: #bcbcd3; word-break: keep-all; }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 35px; }
+    .cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 21px; min-height: 50px; border-radius: 100px; font-size: .87rem; font-weight: 760; transition: transform .2s, background .2s; }
+    .cta:hover { transform: translateY(-3px); }
+    .cta svg { width: 17px; height: 17px; }
+    .cta-primary { color: #171426; background: #e8ddff; }
+    .cta-primary:hover { background: #f5efff; }
+    .cta-ghost { color: #fff; background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.15); }
+    .hero-visual { position: relative; z-index: 1; min-height: 530px; overflow: hidden; }
+    .hero-glow { position: absolute; width: 430px; height: 430px; border-radius: 50%; left: 8%; top: 10%; background: #947fe2; opacity: .18; filter: blur(72px); }
+    .hero-device { position: absolute; width: clamp(180px, 17vw, 234px); padding: 7px; background: rgba(255,255,255,.94); border-radius: 24px; box-shadow: 0 30px 62px rgba(0,0,0,.37); }
+    .hero-device img { width: 100%; aspect-ratio: 941 / 1672; object-fit: cover; border-radius: 18px; }
+    .hero-device.primary { top: 63px; left: 14%; transform: rotate(-9deg); }
+    .hero-device.secondary { top: 116px; left: 52%; transform: rotate(9deg); }
+    .floating-note { position: absolute; z-index: 2; display: flex; align-items: center; gap: 9px; padding: 11px 14px; background: rgba(255,255,255,.94); color: #252438; border-radius: 14px; box-shadow: 0 18px 40px rgba(0,0,0,.25); font-size: .79rem; font-weight: 760; white-space: nowrap; }
+    .floating-note img { width: 27px; height: 27px; border-radius: 8px; object-fit: cover; }
+    .floating-note.top { right: 11%; top: 55px; transform: rotate(3deg); }
+    .floating-note.bottom { bottom: 49px; left: 3%; transform: rotate(-3deg); }
+    .hero-bottom { position: absolute; bottom: 22px; left: 72px; color: rgba(255,255,255,.38); font-size: .71rem; font-weight: 720; letter-spacing: .16em; }
+
+    .section { padding-top: 104px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 34px; }
+    .label { display: inline-flex; align-items: center; gap: 10px; color: #7a5edc; font-size: .73rem; font-weight: 840; letter-spacing: .15em; text-transform: uppercase; }
+    .label::before { content: ""; width: 20px; height: 1px; background: currentColor; }
+    h2 { margin: 14px 0 0; font-size: clamp(2rem, 3.5vw, 3.2rem); line-height: 1.2; font-weight: 800; letter-spacing: -.058em; word-break: keep-all; }
+    .heading-aside { margin: 0 0 3px; max-width: 390px; font-size: .91rem; line-height: 1.85; color: var(--muted); word-break: keep-all; }
+    .projects { display: grid; gap: 24px; }
+    .project { display: grid; grid-template-columns: minmax(0, .81fr) minmax(0, 1.19fr); background: #fff; border: 1px solid #e8e9f0; border-radius: 29px; overflow: hidden; box-shadow: 0 14px 42px rgba(28,35,67,.045); }
+    .project-copy { padding: clamp(30px, 4.3vw, 58px); display: flex; flex-direction: column; align-items: start; }
+    .project-meta { color: #9698a6; font-size: .72rem; font-weight: 840; letter-spacing: .13em; }
+    .project-identity { display: flex; align-items: center; gap: 13px; margin-top: 32px; }
+    .project-icon { width: 60px; height: 60px; object-fit: cover; border-radius: 17px; border: 1px solid rgba(30,34,52,.06); box-shadow: 0 8px 22px rgba(35,32,58,.1); }
+    .project-title { margin: 0; font-size: clamp(1.45rem, 2.2vw, 2rem); line-height: 1.15; letter-spacing: -.045em; font-weight: 790; }
+    .project-kind { display: block; margin-top: 7px; font-size: .75rem; color: #8c909d; }
+    .status { display: inline-flex; gap: 7px; align-items: center; margin-top: 26px; padding: 7px 11px; border-radius: 50px; background: #edf9f2; color: #278256; font-size: .72rem; font-weight: 800; }
+    .status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #36b477; }
+    .status.developing { background: #f2eeff; color: #7555c5; }
+    .status.developing::before { background: #9477ed; }
+    .project-description { margin: 17px 0 0; max-width: 390px; color: #5f6372; font-size: .95rem; line-height: 1.82; word-break: keep-all; }
+    .tags { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 21px; }
+    .tags span { padding: 8px 11px; font-size: .71rem; color: #777b89; border: 1px solid #e8eaf0; border-radius: 50px; font-weight: 680; }
+    .detail-link { display: inline-flex; align-items: center; gap: 11px; border: 0; padding: 0; margin-top: auto; padding-top: 32px; background: none; color: #29263a; font-size: .9rem; font-weight: 810; }
+    .detail-link .link-circle { display: grid; place-items: center; width: 37px; height: 37px; border-radius: 50%; background: #f0ebff; color: var(--accent); transition: transform .2s, background .2s; }
+    .detail-link svg { width: 17px; height: 17px; }
+    .detail-link:hover .link-circle { transform: translateX(5px); background: #e4d9ff; }
+    .project-visual { position: relative; min-width: 0; padding: 28px 27px 24px; background: linear-gradient(145deg, #fff1f7, #f9eaf3 60%, #ede9ff); display: flex; flex-direction: column; justify-content: center; }
+    .project.kkiri .project-visual { background: linear-gradient(135deg,#fff4f0, #f6f7ff 44%, #e6f2ff); }
+    .gallery-caption { display: flex; justify-content: space-between; gap: 10px; align-items: center; margin: 0 3px 16px; color: #807685; font-size: .69rem; font-weight: 790; letter-spacing: .12em; }
+    .kkiri .gallery-caption { color: #6c7f9a; }
+    .shots-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 11px; }
+    .shot { display: block; min-width: 0; padding: 0; border: 0; color: inherit; background: transparent; text-align: center; }
+    .shot-frame { display: block; padding: 5px; border-radius: 15px; background: rgba(255,255,255,.9); box-shadow: 0 12px 22px rgba(69,50,94,.12); transition: transform .23s, box-shadow .23s; }
+    .shot-frame img { display: block; aspect-ratio: 941 / 1672; width: 100%; object-fit: cover; border-radius: 11px; }
+    .shot:hover .shot-frame { transform: translateY(-8px); box-shadow: 0 20px 31px rgba(69,50,94,.2); }
+    .shot-index { display: block; padding-top: 12px; font-size: .69rem; font-weight: 840; color: #947d96; }
+    .kkiri .shot-index { color: #788aa9; }
+    .swipe-hint { display: none; }
+
+    .about { padding-bottom: 108px; }
+    .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 18px; }
+    .about-story, .business { background: #fff; border: 1px solid var(--line); border-radius: 27px; padding: clamp(27px, 3.2vw, 43px); }
+    .about-story { background: #1d2031; color: #fff; overflow: hidden; position: relative; }
+    .about-story::after { content: "D2S"; position: absolute; right: -14px; bottom: -43px; color: rgba(255,255,255,.035); font-size: 12rem; font-weight: 850; pointer-events: none; line-height: 1; }
+    .about-story h3 { margin: 24px 0 0; font-size: clamp(1.6rem,2.7vw,2.35rem); line-height: 1.3; letter-spacing: -.055em; position: relative; z-index: 1; }
+    .about-story p { max-width: 520px; margin: 19px 0 0; color: #bfc1d0; line-height: 1.9; font-size: .93rem; position: relative; z-index: 1; word-break: keep-all; }
+    .about-story .label { color: #b6a0ff; }
+    .business h3 { font-size: 1.27rem; margin: 0 0 21px; font-weight: 790; letter-spacing: -.03em; }
+    .business-row { display: grid; grid-template-columns: 122px 1fr; gap: 12px; border-top: 1px solid #ececf2; padding: 18px 0; font-size: .89rem; }
+    .business-row span { color: #8d909d; }
+    .business-row strong { font-weight: 700; overflow-wrap: anywhere; }
+    .business-row a { color: #5a45b2; }
+    .footer { background: #eeeff5; border-top: 1px solid #e4e5ec; }
+    .footer-content { display: flex; justify-content: space-between; gap: 25px; align-items: center; padding-block: 28px; }
+    .footer strong { display: block; font-size: .95rem; letter-spacing: -.03em; }
+    .footer p, .footer small { color: #8a8d9b; font-size: .78rem; line-height: 1.65; }
+    .footer p { margin: 5px 0 0; }
+
+    dialog { position: fixed; width: min(1000px, calc(100% - 34px)); max-height: min(94dvh, 1100px); border: 0; padding: 0; border-radius: 26px; color: var(--ink); background: #fff; box-shadow: 0 30px 110px rgba(9,11,25,.36); overflow-y: auto; overscroll-behavior: contain; }
+    dialog::backdrop { background: rgba(10,13,28,.72); backdrop-filter: blur(8px); }
+    .dialog-inner { padding: clamp(22px,3vw,38px); }
+    .dialog-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+    .dialog-identity { display: flex; align-items: center; gap: 13px; }
+    .dialog-identity img { width: 57px; height: 57px; object-fit: cover; border-radius: 15px; }
+    .dialog-identity h3 { margin: 0; font-size: 1.42rem; font-weight: 800; letter-spacing: -.05em; }
+    .dialog-identity p { margin: 5px 0 0; color: #9295a1; font-size: .79rem; }
+    .close-modal { display: grid; place-items: center; border: 1px solid var(--line); background: #f7f7fa; border-radius: 50%; width: 42px; height: 42px; flex-shrink: 0; }
+    .close-modal svg { width: 20px; height: 20px; }
+    .dialog-topline { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+    .dialog-topline h4 { margin: 0; font-size: .91rem; font-weight: 800; }
+    .slide-count { font-size: .73rem; color: #777a88; font-weight: 800; letter-spacing: .1em; }
+    .stage { position: relative; min-height: 430px; padding: 22px 75px; display: grid; place-items: center; border-radius: 22px; background: radial-gradient(circle at 50% 50%, #fff 0, #ffedf5 52%, #f2ecff 100%); overflow: hidden; }
+    .stage.kkiri-stage { background: radial-gradient(circle at 50% 50%, #fff 0, #f7f0f5 52%, #e5f1ff 100%); }
+    .stage figure { margin: 0; width: fit-content; }
+    .stage img { display: block; height: min(46dvh, 465px); max-width: 100%; width: auto; aspect-ratio: 941 / 1672; object-fit: contain; border-radius: 13px; box-shadow: 0 17px 48px rgba(23,25,45,.2); }
+    .stage-arrow { position: absolute; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid rgba(34,33,54,.1); border-radius: 50%; background: rgba(255,255,255,.96); box-shadow: 0 8px 23px rgba(0,0,0,.09); }
+    .stage-arrow svg { width: 20px; height: 20px; }
+    .stage-arrow.prev { left: 18px; }
+    .stage-arrow.next { right: 18px; }
+    .stage-arrow:hover { background: #f3ebff; }
+    .thumb-nav { display: flex; justify-content: center; gap: 10px; margin-top: 13px; }
+    .thumb-nav button { display: block; flex: 0 0 59px; padding: 4px; border: 2px solid transparent; border-radius: 9px; background: #f3f4f8; opacity: .65; transition: opacity .2s,border-color .2s; }
+    .thumb-nav button.active { border-color: #8566e7; opacity: 1; }
+    .thumb-nav button img { aspect-ratio: 941 / 1672; width: 100%; object-fit: cover; border-radius: 4px; }
+    .detail-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding-top: 28px; }
+    .detail-columns h4 { margin: 0 0 13px; font-size: 1.03rem; letter-spacing: -.03em; }
+    .detail-columns p { color: #686c7a; font-size: .88rem; line-height: 1.85; margin: 0 0 13px; word-break: keep-all; }
+    .features { display: grid; gap: 0; }
+    .feature { padding: 12px 0; border-bottom: 1px solid #ebecf2; }
+    .feature:first-child { padding-top: 0; }
+    .feature strong { display: block; font-size: .85rem; margin-bottom: 5px; }
+    .feature span { display: block; color: #777b88; font-size: .81rem; line-height: 1.65; }
+    .stores { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line); }
+    .stores h4 { margin: 0; font-size: .97rem; }
+    .stores p { margin: 8px 0 15px; font-size: .84rem; line-height: 1.6; color: #828591; }
+    .store-actions { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+    .store-button { display: flex; align-items: center; justify-content: space-between; padding: 15px 17px; gap: 10px; min-height: 65px; color: #fff; background: #1b1e2b; border-radius: 14px; transition: transform .2s, background .2s; }
+    .store-button:hover { transform: translateY(-2px); background: #33304d; }
+    .store-button small { display: block; font-size: .67rem; color: #b7b8c7; margin-bottom: 2px; }
+    .store-button strong { font-size: .93rem; }
+    .store-button .out { font-size: 1.1rem; }
+    .store-button.disabled { background: #f1f2f6; color: #a0a3ad; pointer-events: none; }
+    .store-button.disabled small { color: #b6b8c0; }
+
+    @media (max-width: 1100px) {
+      .hero-content { padding-left: 48px; }
+      .hero-bottom { left: 48px; }
+      .hero-device.primary { left: 5%; }
+      .hero-device.secondary { left: 46%; }
+      .project-copy { padding: 30px; }
+      .project-visual { padding: 22px 19px; }
+      .shots-row { gap: 8px; }
+    }
+    @media (max-width: 880px) {
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-content { padding: 55px 48px 40px; }
+      .hero-visual { min-height: 340px; }
+      .hero-device { width: 190px; }
+      .hero-device.primary { top: 0; left: 27%; }
+      .hero-device.secondary { top: 27px; left: 53%; }
+      .floating-note.top { top: 8px; right: 8%; }
+      .floating-note.bottom { bottom: 15px; left: 18%; }
+      .hero-bottom { display: none; }
+      .section { padding-top: 82px; }
+      .project { grid-template-columns: 1fr; }
+      .project-copy { padding: 34px; }
+      .project-identity { margin-top: 24px; }
+      .detail-link { margin-top: 0; }
+      .project-visual { padding: 30px; }
+      .shots-row { gap: 15px; }
+      .about-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .container { width: calc(100% - 26px); }
+      .topbar { min-height: 77px; }
+      .brand img { width: 39px; height: 39px; border-radius: 11px; }
+      .brand strong { font-size: 1.01rem; }
+      .brand small { font-size: .63rem; }
+      .top-right { gap: 8px; }
+      .header-contact { padding: 9px; width: 36px; height: 36px; justify-content: center; }
+      .header-contact .contact-label { display: none; }
+      .hero { border-radius: 24px; }
+      .hero-content { padding: 46px 27px 25px; }
+      .hero h1 { font-size: clamp(2.35rem, 10vw, 3.4rem); }
+      .hero-lead { font-size: .9rem; margin-top: 18px; }
+      .hero-buttons { margin-top: 24px; }
+      .cta { padding-inline: 16px; min-height: 46px; font-size: .8rem; }
+      .hero-visual { min-height: 290px; }
+      .hero-device { width: 145px; border-radius: 16px; padding: 5px; }
+      .hero-device img { border-radius: 12px; }
+      .hero-device.primary { top: 2px; left: 15%; }
+      .hero-device.secondary { top: 24px; left: 51%; }
+      .floating-note { padding: 8px 9px; font-size: .67rem; border-radius: 10px; }
+      .floating-note img { width: 23px; height: 23px; }
+      .floating-note.top { right: 3%; top: 5px; }
+      .floating-note.bottom { left: 8%; bottom: 16px; }
+      .section { padding-top: 73px; }
+      .section-heading { display: block; margin-bottom: 25px; }
+      .heading-aside { margin-top: 14px; }
+      h2 { font-size: 2.12rem; }
+      .project { border-radius: 23px; }
+      .project-copy { padding: 27px 25px 30px; }
+      .project-icon { width: 54px; height: 54px; border-radius: 15px; }
+      .project-identity { margin-top: 23px; }
+      .project-title { font-size: 1.55rem; }
+      .status { margin-top: 22px; }
+      .project-description { font-size: .9rem; }
+      .project-visual { padding: 23px 0 23px 21px; }
+      .gallery-caption { margin: 0 20px 14px 2px; }
+      .shots-row { display: grid; grid-auto-flow: column; grid-auto-columns: 40%; grid-template-columns: none; overflow-x: auto; gap: 12px; padding: 0 21px 8px 2px; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #c7b5d2 transparent; }
+      .shot { scroll-snap-align: start; }
+      .shot-index { padding-top: 9px; }
+      .swipe-hint { display: inline; }
+      .about { padding-bottom: 75px; }
+      .about-story, .business { border-radius: 23px; padding: 29px 26px; }
+      .business-row { grid-template-columns: 92px 1fr; font-size: .83rem; }
+      .footer-content { align-items: flex-start; flex-direction: column; gap: 9px; }
+      dialog { width: calc(100% - 18px); max-height: 96dvh; border-radius: 18px; }
+      .dialog-inner { padding: 18px; }
+      .dialog-identity img { width: 47px; height: 47px; border-radius: 12px; }
+      .dialog-identity h3 { font-size: 1.17rem; }
+      .dialog-identity p { font-size: .7rem; }
+      .stage { min-height: 340px; padding: 21px 48px; border-radius: 15px; }
+      .stage img { height: min(45dvh, 395px); }
+      .stage-arrow { width: 35px; height: 35px; }
+      .stage-arrow.prev { left: 7px; }
+      .stage-arrow.next { right: 7px; }
+      .thumb-nav { gap: 6px; }
+      .thumb-nav button { flex-basis: 47px; }
+      .detail-columns { grid-template-columns: 1fr; gap: 20px; }
+      .store-actions { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
     }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <header class="topbar">
-      <a class="brand" href="#top" id="top" aria-label="Derrick2Sky home">
-        <img src="./assets/profile/icon.png" alt="Derrick2Sky icon" />
-        <span>
-          <strong>Derrick2Sky</strong>
-          <span>Software Studio</span>
-        </span>
+  <header class="site-header" id="top">
+    <div class="container topbar">
+      <a class="brand" href="#top" aria-label="Derrick2Sky home">
+        <img src="./assets/profile/icon.png" alt="" width="45" height="45" />
+        <span><strong>Derrick2Sky</strong><small>SOFTWARE STUDIO</small></span>
       </a>
-
-      <div class="top-actions">
-        <a class="contact" href="mailto:derrick2sky@gmail.com">derrick2sky@gmail.com</a>
-        <div class="lang-toggle" aria-label="Language">
-          <button type="button" class="active" data-lang="ko">KO</button>
-          <button type="button" data-lang="en">EN</button>
+      <div class="top-right">
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#apps" data-ko="프로젝트" data-en="Projects">프로젝트</a>
+          <a href="#about" data-ko="스튜디오 소개" data-en="About">스튜디오 소개</a>
+        </nav>
+        <a class="header-contact" href="mailto:derrick2sky@gmail.com" aria-label="Email Derrick2Sky">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <span class="contact-label" data-ko="문의하기" data-en="Contact">문의하기</span>
+        </a>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="active" data-lang="ko" aria-pressed="true">KO</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
         </div>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow">
-            <span class="eyebrow-dot"></span>
-            <span data-ko="독립 소프트웨어 스튜디오" data-en="Independent software studio">독립 소프트웨어 스튜디오</span>
-          </span>
-
-          <h1 id="hero-title" data-ko="아이디어를<br>쓸 수 있는 제품으로" data-en="Turning ideas into<br>products people use">
-            아이디어를<br>쓸 수 있는 제품으로
+  <main>
+    <div class="container">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <span class="hero-eyebrow"><i class="pulse-dot" aria-hidden="true"></i> INDEPENDENT SOFTWARE STUDIO</span>
+          <h1 id="hero-title">
+            <span data-ko="작은 아이디어를" data-en="Small ideas.">작은 아이디어를</span>
+            <span class="hero-gradient" data-ko="매일 쓰는 경험으로." data-en="Real experiences.">매일 쓰는 경험으로.</span>
           </h1>
-
-          <p class="lead"
-             data-ko="Derrick2Sky는 모바일 앱을 중심으로 기획, 인터랙션, 구현을 한 흐름으로 연결해 실제 출시 가능한 디지털 제품을 만듭니다."
-             data-en="Derrick2Sky is an independent software studio that turns ideas into real mobile products, with equal attention to user flow and implementation quality.">
-            Derrick2Sky는 모바일 앱을 중심으로 기획, 인터랙션, 구현을 한 흐름으로 연결해 실제 출시 가능한 디지털 제품을 만듭니다.
-          </p>
-
-          <div class="hero-actions">
-            <a class="button button-primary" href="#company" data-ko="회사 소개" data-en="About the studio">회사 소개</a>
-            <a class="button button-secondary" href="#apps" data-ko="앱 보기" data-en="View apps">앱 보기</a>
+          <p class="hero-lead" data-ko="Derrick2Sky는 일상 속 작은 아이디어를 발견하고, 디자인과 기술을 연결해 오래 쓰고 싶은 모바일 앱을 만듭니다." data-en="At Derrick2Sky, we turn everyday ideas into thoughtfully designed mobile experiences, connecting product thinking and technology.">Derrick2Sky는 일상 속 작은 아이디어를 발견하고, 디자인과 기술을 연결해 오래 쓰고 싶은 모바일 앱을 만듭니다.</p>
+          <div class="hero-buttons">
+            <a href="#apps" class="cta cta-primary">
+              <span data-ko="프로젝트 살펴보기" data-en="Explore projects">프로젝트 살펴보기</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+            </a>
+            <a href="#about" class="cta cta-ghost" data-ko="스튜디오 소개" data-en="About the studio">스튜디오 소개</a>
           </div>
         </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-glow"></div>
+          <div class="hero-device primary"><img src="./assets/keycap-keyring/1.png" alt="" width="941" height="1672" fetchpriority="high" /></div>
+          <div class="hero-device secondary"><img src="./assets/kkirikkiri/1.png" alt="" width="941" height="1672" fetchpriority="high" /></div>
+          <div class="floating-note top"><img src="./assets/kkirikkiri/kkirikkiri_icon_512.png" alt="" /> 끼리끼리</div>
+          <div class="floating-note bottom"><img src="./assets/keycap-keyring/app_icon.png" alt="" /> KeyCap KeyRing</div>
+        </div>
+      </section>
 
-        <div class="dev-panel" aria-label="Developer visual">
-          <div class="dev-window">
-            <div class="window-top"><i></i><i></i><i></i></div>
-            <div class="dev-body">
-              <img src="./assets/profile/icon.png" alt="Derrick2Sky profile icon" />
-              <div class="code-lines" aria-hidden="true">
-                <div class="code-line"></div>
-                <div class="code-line"></div>
-                <div class="code-line"></div>
-                <div class="code-line"></div>
-                <div class="code-line"></div>
+      <section class="section" id="apps" aria-labelledby="apps-title">
+        <div class="section-heading">
+          <div><span class="label">Selected work / 01</span><h2 id="apps-title" data-ko="직접 만든, 두 가지 경험" data-en="Two ideas, brought to life">직접 만든, 두 가지 경험</h2></div>
+          <p class="heading-aside" data-ko="아이디어부터 디자인, 개발, 출시와 운영까지. 각 앱의 실제 화면을 확인하고 프로젝트에 담긴 이야기를 살펴보세요." data-en="From first idea to design, development, and release. Explore real app screens and the thinking behind each product.">아이디어부터 디자인, 개발, 출시와 운영까지. 각 앱의 실제 화면을 확인하고 프로젝트에 담긴 이야기를 살펴보세요.</p>
+        </div>
+        <div class="projects">
+          <article class="project keycap" aria-labelledby="keycap-name">
+            <div class="project-copy">
+              <span class="project-meta">01 / MOBILE APPLICATION</span>
+              <div class="project-identity">
+                <img class="project-icon" src="./assets/keycap-keyring/app_icon.png" alt="KeyCap KeyRing app icon" width="60" height="60" loading="lazy" />
+                <div><h3 class="project-title" id="keycap-name">KeyCap KeyRing</h3><span class="project-kind">Flutter · Android · iOS</span></div>
+              </div>
+              <span class="status" data-ko="스토어 출시" data-en="Available on stores">스토어 출시</span>
+              <p class="project-description" data-ko="키캡부터 스위치, 레이아웃과 사운드까지. 나만의 미니어처 키보드 키링을 화면에서 자유롭게 꾸며보는 커스터마이징 앱입니다." data-en="Customize your own miniature keyboard keyring, from keycaps, switches and layouts to sounds, all in one mobile app.">키캡부터 스위치, 레이아웃과 사운드까지. 나만의 미니어처 키보드 키링을 화면에서 자유롭게 꾸며보는 커스터마이징 앱입니다.</p>
+              <div class="tags" aria-label="Tech and features"><span>Customization</span><span>Flutter</span><span>Mobile</span></div>
+              <button class="detail-link" type="button" data-open="keycap" data-slide="0">
+                <span data-ko="프로젝트 자세히 보기" data-en="Explore this project">프로젝트 자세히 보기</span>
+                <span class="link-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+              </button>
+            </div>
+            <div class="project-visual">
+              <div class="gallery-caption"><span>APP SCREENSHOTS</span><span>01 — 04 <span class="swipe-hint" data-ko="· 옆으로 밀어보세요" data-en="· Swipe to view">· 옆으로 밀어보세요</span></span></div>
+              <div class="shots-row" role="group" aria-label="KeyCap KeyRing screenshots, 1 to 4">
+                <button class="shot" type="button" data-open="keycap" data-slide="0" aria-label="KeyCap KeyRing screenshot 1, enlarge"><span class="shot-frame"><img src="./assets/keycap-keyring/1.png" alt="KeyCap KeyRing screenshot 1" width="941" height="1672" loading="lazy" /></span><span class="shot-index">01</span></button>
+                <button class="shot" type="button" data-open="keycap" data-slide="1" aria-label="KeyCap KeyRing screenshot 2, enlarge"><span class="shot-frame"><img src="./assets/keycap-keyring/2.png" alt="KeyCap KeyRing screenshot 2" width="941" height="1672" loading="lazy" /></span><span class="shot-index">02</span></button>
+                <button class="shot" type="button" data-open="keycap" data-slide="2" aria-label="KeyCap KeyRing screenshot 3, enlarge"><span class="shot-frame"><img src="./assets/keycap-keyring/3.png" alt="KeyCap KeyRing screenshot 3" width="941" height="1672" loading="lazy" /></span><span class="shot-index">03</span></button>
+                <button class="shot" type="button" data-open="keycap" data-slide="3" aria-label="KeyCap KeyRing screenshot 4, enlarge"><span class="shot-frame"><img src="./assets/keycap-keyring/4.png" alt="KeyCap KeyRing screenshot 4" width="941" height="1672" loading="lazy" /></span><span class="shot-index">04</span></button>
               </div>
             </div>
-          </div>
-          <div class="dev-labels">
-            <span>Design</span>
-            <span>Build</span>
-            <span>Ship</span>
-          </div>
+          </article>
+
+          <article class="project kkiri" aria-labelledby="kkiri-name">
+            <div class="project-copy">
+              <span class="project-meta">02 / SOCIAL APPLICATION</span>
+              <div class="project-identity">
+                <img class="project-icon" src="./assets/kkirikkiri/kkirikkiri_icon_512.png" alt="끼리끼리 app icon" width="60" height="60" loading="lazy" />
+                <div><h3 class="project-title" id="kkiri-name">끼리끼리</h3><span class="project-kind">Flutter · Android · iOS</span></div>
+              </div>
+              <span class="status developing" data-ko="출시 준비 중" data-en="In development">출시 준비 중</span>
+              <p class="project-description" data-ko="친구와 같은 질문에 답하며 서로의 생각을 알아가는 서비스. 매일의 질문과 궁합, 리포트를 통해 관계를 더 깊이 이해할 수 있습니다." data-en="A social app to explore how you and your friends think, with daily questions, evolving compatibility, and thoughtful reports.">친구와 같은 질문에 답하며 서로의 생각을 알아가는 서비스. 매일의 질문과 궁합, 리포트를 통해 관계를 더 깊이 이해할 수 있습니다.</p>
+              <div class="tags" aria-label="Tech and features"><span>Social</span><span>Daily Questions</span><span>Flutter</span></div>
+              <button class="detail-link" type="button" data-open="kkiri" data-slide="0">
+                <span data-ko="프로젝트 자세히 보기" data-en="Explore this project">프로젝트 자세히 보기</span>
+                <span class="link-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+              </button>
+            </div>
+            <div class="project-visual">
+              <div class="gallery-caption"><span>APP SCREENSHOTS</span><span>01 — 04 <span class="swipe-hint" data-ko="· 옆으로 밀어보세요" data-en="· Swipe to view">· 옆으로 밀어보세요</span></span></div>
+              <div class="shots-row" role="group" aria-label="끼리끼리 screenshots, 1 to 4">
+                <button class="shot" type="button" data-open="kkiri" data-slide="0" aria-label="끼리끼리 screenshot 1, enlarge"><span class="shot-frame"><img src="./assets/kkirikkiri/1.png" alt="끼리끼리 screenshot 1" width="941" height="1672" loading="lazy" /></span><span class="shot-index">01</span></button>
+                <button class="shot" type="button" data-open="kkiri" data-slide="1" aria-label="끼리끼리 screenshot 2, enlarge"><span class="shot-frame"><img src="./assets/kkirikkiri/2.png" alt="끼리끼리 screenshot 2" width="941" height="1672" loading="lazy" /></span><span class="shot-index">02</span></button>
+                <button class="shot" type="button" data-open="kkiri" data-slide="2" aria-label="끼리끼리 screenshot 3, enlarge"><span class="shot-frame"><img src="./assets/kkirikkiri/3.png" alt="끼리끼리 screenshot 3" width="941" height="1672" loading="lazy" /></span><span class="shot-index">03</span></button>
+                <button class="shot" type="button" data-open="kkiri" data-slide="3" aria-label="끼리끼리 screenshot 4, enlarge"><span class="shot-frame"><img src="./assets/kkirikkiri/4.png" alt="끼리끼리 screenshot 4" width="941" height="1672" loading="lazy" /></span><span class="shot-index">04</span></button>
+              </div>
+            </div>
+          </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <main>
-      <section class="section-card" id="company" aria-labelledby="company-title">
-        <div class="section-head">
-          <div>
-            <span class="kicker">Company</span>
-            <h2 id="company-title" data-ko="Derrick2Sky 소개" data-en="About Derrick2Sky">Derrick2Sky 소개</h2>
-            <p class="section-sub"
-               data-ko="하나의 앱을 단순한 화면이 아니라 실제로 사용할 수 있는 제품으로 완성하는 것을 목표로 합니다."
-               data-en="We focus on turning each app into a usable product, not just a collection of screens.">
-              하나의 앱을 단순한 화면이 아니라 실제로 사용할 수 있는 제품으로 완성하는 것을 목표로 합니다.
-            </p>
-          </div>
+      <section class="section about" id="about" aria-labelledby="about-title">
+        <div class="section-heading">
+          <div><span class="label">The studio / 02</span><h2 id="about-title" data-ko="좋은 경험은 작은 디테일에서" data-en="Thoughtful by design">좋은 경험은 작은 디테일에서</h2></div>
+          <p class="heading-aside" data-ko="보기 좋은 화면을 넘어, 실제 사용 과정이 자연스럽고 오래 운영할 수 있는 제품을 지향합니다." data-en="Beyond polished interfaces, we aim for natural, lasting experiences that work in the real world.">보기 좋은 화면을 넘어, 실제 사용 과정이 자연스럽고 오래 운영할 수 있는 제품을 지향합니다.</p>
         </div>
-
-        <div class="company-grid">
-          <div class="company-copy">
-            <h3 data-ko="작은 아이디어를, 오래 쓰이는 제품으로" data-en="Small ideas, built into products that last">작은 아이디어를, 오래 쓰이는 제품으로</h3>
-            <p data-ko="데릭투스카이(Derrick2Sky)는 모바일 앱을 중심으로 기획, 인터랙션, 구현을 하나의 흐름으로 연결하는 소프트웨어 스튜디오입니다. 보기 좋은 화면에 그치지 않고, 실제 사용 과정이 자연스럽고 운영 가능한 제품을 만드는 것을 중요하게 생각합니다."
-               data-en="Derrick2Sky is an independent software studio focused on mobile products. We connect product thinking, interaction design, and implementation into one coherent flow, with an emphasis on products that are not only polished, but genuinely usable and ready to operate.">
-              데릭투스카이(Derrick2Sky)는 모바일 앱을 중심으로 기획, 인터랙션, 구현을 하나의 흐름으로 연결하는 소프트웨어 스튜디오입니다. 보기 좋은 화면에 그치지 않고, 실제 사용 과정이 자연스럽고 운영 가능한 제품을 만드는 것을 중요하게 생각합니다.
-            </p>
-            <p data-ko="현재 KeyCap KeyRing과 가치관 기반 소셜 서비스 끼리끼리를 직접 개발·운영하고 있습니다. 각 제품은 아이디어 단계부터 출시 이후의 사용 경험까지 하나의 브랜드로 완성하는 것을 목표로 합니다."
-               data-en="We currently develop and operate KeyCap KeyRing and KkiriKkiri, a value-compatibility social service. Each product is shaped as a complete brand, from the initial idea through the experience after release.">
-              현재 KeyCap KeyRing과 가치관 기반 소셜 서비스 끼리끼리를 직접 개발·운영하고 있습니다. 각 제품은 아이디어 단계부터 출시 이후의 사용 경험까지 하나의 브랜드로 완성하는 것을 목표로 합니다.
-            </p>
+        <div class="about-grid">
+          <div class="about-story">
+            <span class="label">ABOUT DERRICK2SKY</span>
+            <h3 data-ko="기획부터 출시까지,<br>하나의 흐름으로." data-en="From concept to launch,<br>one connected process.">기획부터 출시까지,<br>하나의 흐름으로.</h3>
+            <p data-ko="데릭투스카이(Derrick2Sky)는 모바일 앱을 중심으로 기획, 인터랙션, 구현을 하나의 흐름으로 연결하는 독립 소프트웨어 스튜디오입니다." data-en="Derrick2Sky is an independent software studio focused on mobile products, bringing product strategy, interaction design, and implementation together.">데릭투스카이(Derrick2Sky)는 모바일 앱을 중심으로 기획, 인터랙션, 구현을 하나의 흐름으로 연결하는 독립 소프트웨어 스튜디오입니다.</p>
+            <p data-ko="현재 KeyCap KeyRing과 가치관 기반 소셜 서비스 끼리끼리를 개발·운영하며, 아이디어 단계부터 출시 이후의 사용 경험까지 하나의 제품으로 완성하는 것을 중요하게 생각합니다." data-en="We develop KeyCap KeyRing and KkiriKkiri, shaping each idea into a complete product and caring about the experience beyond launch.">현재 KeyCap KeyRing과 가치관 기반 소셜 서비스 끼리끼리를 개발·운영하며, 아이디어 단계부터 출시 이후의 사용 경험까지 하나의 제품으로 완성하는 것을 중요하게 생각합니다.</p>
           </div>
-
-          <aside class="business-card" aria-label="Business information">
+          <aside class="business" aria-label="Business information">
             <h3 data-ko="사업자 정보" data-en="Business information">사업자 정보</h3>
-            <div class="business-list">
-              <div class="business-row">
-                <span data-ko="상호" data-en="Business">상호</span>
-                <strong>데릭투스카이</strong>
-              </div>
-              <div class="business-row">
-                <span data-ko="대표자" data-en="Representative">대표자</span>
-                <strong>이세준</strong>
-              </div>
-              <div class="business-row">
-                <span data-ko="사업자번호" data-en="Registration No.">사업자번호</span>
-                <strong>724-23-02291</strong>
-              </div>
-              <div class="business-row">
-                <span data-ko="문의" data-en="Contact">문의</span>
-                <strong>derrick2sky@gmail.com</strong>
-              </div>
-            </div>
+            <div class="business-row"><span data-ko="상호" data-en="Business">상호</span><strong>데릭투스카이</strong></div>
+            <div class="business-row"><span data-ko="대표자" data-en="Representative">대표자</span><strong>이세준</strong></div>
+            <div class="business-row"><span data-ko="사업자번호" data-en="Registration No.">사업자번호</span><strong>724-23-02291</strong></div>
+            <div class="business-row"><span data-ko="문의" data-en="Email">문의</span><strong><a href="mailto:derrick2sky@gmail.com">derrick2sky@gmail.com</a></strong></div>
           </aside>
         </div>
       </section>
+    </div>
+  </main>
 
-      <section class="section-card" id="apps" aria-labelledby="apps-title">
-        <div class="section-head">
-          <div>
-            <span class="kicker">Apps</span>
-            <h2 id="apps-title" data-ko="Derrick2Sky의 앱" data-en="Apps by Derrick2Sky">Derrick2Sky의 앱</h2>
-            <p class="section-sub"
-               data-ko="출시 또는 개발 중인 앱을 소개합니다. 카드를 누르면 각 앱의 상세 설명을 볼 수 있습니다."
-               data-en="Explore released and in-development apps. Select a card to read more about each product.">
-              출시 또는 개발 중인 앱을 소개합니다. 카드를 누르면 각 앱의 상세 설명을 볼 수 있습니다.
-            </p>
+  <footer class="footer">
+    <div class="container footer-content">
+      <div><strong>Derrick2Sky</strong><p data-ko="작은 아이디어를 매일 쓰는 경험으로." data-en="Small ideas. Real experiences.">작은 아이디어를 매일 쓰는 경험으로.</p></div>
+      <small data-ko="데릭투스카이 · 대표 이세준 · 사업자등록번호 724-23-02291" data-en="Derrick2Sky · Representative Sejun Lee · Business Registration No. 724-23-02291">데릭투스카이 · 대표 이세준 · 사업자등록번호 724-23-02291</small>
+    </div>
+  </footer>
+
+  <dialog id="keycap-dialog" data-gallery="keycap" aria-labelledby="keycap-dialog-title">
+    <div class="dialog-inner">
+      <div class="dialog-header">
+        <div class="dialog-identity"><img src="./assets/keycap-keyring/app_icon.png" alt="" width="57" height="57" /><div><h3 id="keycap-dialog-title">KeyCap KeyRing</h3><p>Flutter · Android · iOS</p></div></div>
+        <button type="button" class="close-modal" data-close aria-label="Close dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 5 19 19M19 5 5 19" /></svg></button>
+      </div>
+      <div class="dialog-topline"><h4 data-ko="앱 화면 미리보기" data-en="App screenshots">앱 화면 미리보기</h4><span class="slide-count" aria-live="polite">01 / 04</span></div>
+      <div class="stage">
+        <button class="stage-arrow prev" type="button" data-direction="-1" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg></button>
+        <figure><img class="stage-image" src="./assets/keycap-keyring/1.png" alt="KeyCap KeyRing screenshot 1" width="941" height="1672" /></figure>
+        <button class="stage-arrow next" type="button" data-direction="1" aria-label="Next screenshot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg></button>
+      </div>
+      <div class="thumb-nav" role="group" aria-label="KeyCap KeyRing screenshot selection">
+        <button type="button" data-thumb="0" aria-label="Show screenshot 1" class="active" aria-pressed="true"><img src="./assets/keycap-keyring/1.png" alt="" width="941" height="1672" loading="lazy" /></button>
+        <button type="button" data-thumb="1" aria-label="Show screenshot 2" aria-pressed="false"><img src="./assets/keycap-keyring/2.png" alt="" width="941" height="1672" loading="lazy" /></button>
+        <button type="button" data-thumb="2" aria-label="Show screenshot 3" aria-pressed="false"><img src="./assets/keycap-keyring/3.png" alt="" width="941" height="1672" loading="lazy" /></button>
+        <button type="button" data-thumb="3" aria-label="Show screenshot 4" aria-pressed="false"><img src="./assets/keycap-keyring/4.png" alt="" width="941" height="1672" loading="lazy" /></button>
+      </div>
+      <div class="detail-columns">
+        <div>
+          <h4 data-ko="나만의 키캡 키링을 직접 만들어보세요" data-en="Build a keycap keyring that's yours">나만의 키캡 키링을 직접 만들어보세요</h4>
+          <p data-ko="KeyCap KeyRing은 레이아웃, 스위치, 키캡, 사진을 자유롭게 조합하고 결과를 바로 확인할 수 있는 커스터마이징 앱입니다. 실제 조합하는 즐거움을 모바일 화면에 자연스럽게 담았습니다." data-en="KeyCap KeyRing lets you combine layouts, switches, keycaps, and photos with immediate previews. The entire experience is designed around the joy of customizing.">KeyCap KeyRing은 레이아웃, 스위치, 키캡, 사진을 자유롭게 조합하고 결과를 바로 확인할 수 있는 커스터마이징 앱입니다. 실제 조합하는 즐거움을 모바일 화면에 자연스럽게 담았습니다.</p>
+          <p data-ko="사진 선택, 녹음과 재생, 인앱 구매와 광고 제거, 구매 복원까지 실제 출시·운영에 필요한 기능을 포함합니다." data-en="It includes photo selection, recording and playback, in-app purchases, ad removal, and purchase restoration for a complete production experience.">사진 선택, 녹음과 재생, 인앱 구매와 광고 제거, 구매 복원까지 실제 출시·운영에 필요한 기능을 포함합니다.</p>
+        </div>
+        <div>
+          <h4 data-ko="주요 기능" data-en="Key features">주요 기능</h4>
+          <div class="features">
+            <div class="feature"><strong data-ko="다양한 커스터마이징" data-en="Flexible customization">다양한 커스터마이징</strong><span data-ko="키캡·스위치·레이아웃·사진을 조합하고 즉시 미리보기" data-en="Combine keycaps, switches, layouts, and photos with instant previews">키캡·스위치·레이아웃·사진을 조합하고 즉시 미리보기</span></div>
+            <div class="feature"><strong data-ko="사운드와 인터랙션" data-en="Sound and interaction">사운드와 인터랙션</strong><span data-ko="키를 누르는 감각과 녹음·재생 기능" data-en="Tactile key interactions, recording, and playback">키를 누르는 감각과 녹음·재생 기능</span></div>
+            <div class="feature"><strong data-ko="앱 운영 기능" data-en="Production features">앱 운영 기능</strong><span data-ko="인앱 구매, 광고 제거, 설정, 구매 복원" data-en="In-app purchases, ad removal, settings, and restore flows">인앱 구매, 광고 제거, 설정, 구매 복원</span></div>
           </div>
         </div>
-
-        <div class="apps-grid">
-          <button class="app-card" type="button" data-dialog="keycap-dialog">
-            <div class="app-visual keycap">
-              <img src="./assets/keycap-keyring/phone-keycap.png" alt="KeyCap KeyRing app screen" />
-              <span class="status-badge">Mobile App</span>
-            </div>
-            <div class="app-card-body">
-              <div class="app-title-row">
-                <span class="app-icon"><img src="./assets/keycap-keyring/app_icon.png" alt="KeyCap KeyRing icon" /></span>
-                <span>
-                  <h3>KeyCap KeyRing</h3>
-                  <span class="platform">Flutter · Android · iOS</span>
-                </span>
-              </div>
-              <p class="app-summary"
-                 data-ko="미니어처 키캡 키링의 레이아웃, 스위치, 키캡과 사진을 화면에서 조합하고 바로 확인할 수 있는 커스터마이징 앱입니다."
-                 data-en="A customization app for composing miniature keycap keyring combinations, including layouts, switches, keycaps, and photo-based designs.">
-                미니어처 키캡 키링의 레이아웃, 스위치, 키캡과 사진을 화면에서 조합하고 바로 확인할 수 있는 커스터마이징 앱입니다.
-              </p>
-              <span class="app-more" data-ko="자세히 보기" data-en="View details">자세히 보기</span>
-            </div>
-          </button>
-
-          <button class="app-card" type="button" data-dialog="kkiri-dialog">
-            <div class="app-visual kkiri">
-              <div class="coming-empty">
-                <div>
-                  <strong data-ko="출시 준비 중" data-en="Coming soon">출시 준비 중</strong>
-                  <span data-ko="스크린샷은 정식 출시 준비 후 공개됩니다." data-en="Screenshots will be added as release preparation progresses.">스크린샷은 정식 출시 준비 후 공개됩니다.</span>
-                </div>
-              </div>
-              <span class="status-badge" data-ko="출시 준비 중" data-en="Coming Soon">출시 준비 중</span>
-            </div>
-            <div class="app-card-body">
-              <div class="app-title-row">
-                <span class="app-icon kkiri-mini"><img src="./assets/kkirikkiri/kkirikkiri_icon_512.png" alt="끼리끼리 icon" /></span>
-                <span>
-                  <h3>끼리끼리</h3>
-                  <span class="platform">Flutter · Android · iOS</span>
-                </span>
-              </div>
-              <p class="app-summary"
-                 data-ko="친구와 같은 질문에 답하고 서로의 생각과 가치관이 얼마나 닮아 있는지 확인하는 가치관 기반 소셜 서비스입니다."
-                 data-en="A value-compatibility social service where friends answer the same questions and discover where their perspectives align or differ.">
-                친구와 같은 질문에 답하고 서로의 생각과 가치관이 얼마나 닮아 있는지 확인하는 가치관 기반 소셜 서비스입니다.
-              </p>
-              <span class="app-more" data-ko="자세히 보기" data-en="View details">자세히 보기</span>
-            </div>
-          </button>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div>
-        <strong>Derrick2Sky</strong>
-        <span data-ko="모바일 앱과 디지털 제품을 개발합니다." data-en="Mobile apps and digital products.">모바일 앱과 디지털 제품을 개발합니다.</span>
       </div>
-      <div>
-        <span data-ko="데릭투스카이 · 대표 이세준 · 사업자등록번호 724-23-02291" data-en="Derrick2Sky · Representative Sejun Lee · Business Registration No. 724-23-02291">
-          데릭투스카이 · 대표 이세준 · 사업자등록번호 724-23-02291
-        </span>
-      </div>
-    </footer>
-  </div>
-
-  <dialog id="keycap-dialog">
-    <div class="dialog-inner">
-      <div class="dialog-top">
-        <div class="dialog-title-wrap">
-          <span class="app-icon"><img src="./assets/keycap-keyring/app_icon.png" alt="KeyCap KeyRing icon" /></span>
-          <span>
-            <h3>KeyCap KeyRing</h3>
-            <p>Flutter · Android · iOS</p>
-          </span>
-        </div>
-        <button class="close-btn" type="button" aria-label="Close">×</button>
-      </div>
-
-      <div class="detail-hero">
-        <div class="detail-copy-card">
-          <h4 data-ko="키캡 키링을 화면에서 직접 조합하는 커스터마이징 앱" data-en="A hands-on keycap keyring customization app">
-            키캡 키링을 화면에서 직접 조합하는 커스터마이징 앱
-          </h4>
-          <p data-ko="KeyCap KeyRing은 레이아웃, 스위치, 키캡, 사진 요소를 선택하면서 결과를 바로 확인할 수 있도록 만든 모바일 앱입니다. 단순한 미리보기보다 실제 커스터마이징 과정 자체가 자연스럽게 이어지도록 구성했습니다."
-             data-en="KeyCap KeyRing lets users combine layouts, switches, keycaps, and photo elements while previewing the result immediately. The product is designed around the customization flow itself rather than a static preview.">
-            KeyCap KeyRing은 레이아웃, 스위치, 키캡, 사진 요소를 선택하면서 결과를 바로 확인할 수 있도록 만든 모바일 앱입니다. 단순한 미리보기보다 실제 커스터마이징 과정 자체가 자연스럽게 이어지도록 구성했습니다.
-          </p>
-          <p data-ko="Flutter 기반으로 제작되며 이미지 선택, 녹음과 재생, 오디오 편집, 인앱 구매, 광고, 설정, 복원 등 실제 출시 앱에 필요한 기능까지 포함합니다."
-             data-en="Built with Flutter, it also includes production-minded features such as image picking, recording and playback, audio editing, in-app purchases, ads, settings, and restore flows.">
-            Flutter 기반으로 제작되며 이미지 선택, 녹음과 재생, 오디오 편집, 인앱 구매, 광고, 설정, 복원 등 실제 출시 앱에 필요한 기능까지 포함합니다.
-          </p>
-        </div>
-
-        <div class="modal-preview">
-          <img src="./assets/keycap-keyring/phone-main.png" alt="KeyCap KeyRing main screen" />
-        </div>
-      </div>
-
-      <div class="screenshot-section">
-        <div class="screenshot-head">
-          <h4 data-ko="앱 화면" data-en="App screens">앱 화면</h4>
-          <span data-ko="실제 프로젝트 asset 사용" data-en="Using project assets">실제 프로젝트 asset 사용</span>
-        </div>
-        <div class="screenshots">
-          <div class="screen-card"><img src="./assets/keycap-keyring/phone-main.png" alt="KeyCap KeyRing main screen" /></div>
-          <div class="screen-card"><img src="./assets/keycap-keyring/phone-keycap.png" alt="KeyCap KeyRing keycap screen 1080 by 2400" /></div>
-          <div class="screen-card"><img src="./assets/keycap-keyring/phone-switch.png" alt="KeyCap KeyRing switch screen 1080 by 2400" /></div>
-          <div class="screen-card splash"><img src="./assets/keycap-keyring/splash.png" alt="KeyCap KeyRing splash screen 853 by 1844" /></div>
-        </div>
-      </div>
-
-      <div class="feature-list">
-        <div class="feature-row">
-          <strong data-ko="커스터마이징" data-en="Customization">커스터마이징</strong>
-          <span data-ko="레이아웃, 스위치, 키캡, 사진 요소를 조합하고 변경 결과를 즉시 확인합니다." data-en="Combine layouts, switches, keycaps, and photo elements with immediate visual feedback.">레이아웃, 스위치, 키캡, 사진 요소를 조합하고 변경 결과를 즉시 확인합니다.</span>
-        </div>
-        <div class="feature-row">
-          <strong data-ko="미디어 기능" data-en="Media">미디어 기능</strong>
-          <span data-ko="사진 선택과 사운드 녹음·재생·편집 흐름을 모바일 환경에 맞게 구성했습니다." data-en="Includes photo selection and mobile-first recording, playback, and audio editing flows.">사진 선택과 사운드 녹음·재생·편집 흐름을 모바일 환경에 맞게 구성했습니다.</span>
-        </div>
-        <div class="feature-row">
-          <strong data-ko="제품 운영" data-en="Product operations">제품 운영</strong>
-          <span data-ko="인앱 구매, 광고, 설정, 구매 복원 등 출시 이후 운영을 고려한 기능을 포함합니다." data-en="Includes in-app purchases, ads, settings, and restore flows for release-minded operation.">인앱 구매, 광고, 설정, 구매 복원 등 출시 이후 운영을 고려한 기능을 포함합니다.</span>
-        </div>
-      </div>
-
-      <section class="store-section" aria-label="Store links">
-        <h4 data-ko="스토어에서 만나보세요" data-en="Available on the stores">스토어에서 만나보세요</h4>
+      <section class="stores" aria-label="Store links">
+        <h4 data-ko="스토어에서 만나보세요" data-en="Find it on the stores">스토어에서 만나보세요</h4>
         <p data-ko="KeyCap KeyRing은 Google Play와 App Store에서 확인할 수 있습니다." data-en="KeyCap KeyRing is available on Google Play and the App Store.">KeyCap KeyRing은 Google Play와 App Store에서 확인할 수 있습니다.</p>
-        <div class="store-links">
-          <a class="store-link" href="https://play.google.com/store/apps/details?id=com.derrick2sky.keycap_keyring&amp;hl=ko" target="_blank" rel="noopener noreferrer">
-            <span><small>GET IT ON</small><strong>Google Play</strong></span><span class="arrow">↗</span>
-          </a>
-          <a class="store-link" href="https://apps.apple.com/kr/app/%ED%82%A4%EC%BA%A1%ED%82%A4%EB%A7%81/id6772980367" target="_blank" rel="noopener noreferrer">
-            <span><small>DOWNLOAD ON THE</small><strong>App Store</strong></span><span class="arrow">↗</span>
-          </a>
+        <div class="store-actions">
+          <a class="store-button" href="https://play.google.com/store/apps/details?id=com.derrick2sky.keycap_keyring&amp;hl=ko" target="_blank" rel="noopener noreferrer"><span><small>GET IT ON</small><strong>Google Play</strong></span><span class="out">↗</span></a>
+          <a class="store-button" href="https://apps.apple.com/kr/app/%ED%82%A4%EC%BA%A1%ED%82%A4%EB%A7%81/id6772980367" target="_blank" rel="noopener noreferrer"><span><small>DOWNLOAD ON THE</small><strong>App Store</strong></span><span class="out">↗</span></a>
         </div>
       </section>
     </div>
   </dialog>
 
-  <dialog id="kkiri-dialog">
+  <dialog id="kkiri-dialog" data-gallery="kkiri" aria-labelledby="kkiri-dialog-title">
     <div class="dialog-inner">
-      <div class="dialog-top">
-        <div class="dialog-title-wrap">
-          <span class="app-icon kkiri-mini"><img src="./assets/kkirikkiri/kkirikkiri_icon_512.png" alt="끼리끼리 icon" /></span>
-          <span>
-            <h3>끼리끼리</h3>
-            <p data-ko="가치관 기반 소셜 서비스 · 출시 준비 중" data-en="Value-compatibility social service · Coming soon">가치관 기반 소셜 서비스 · 출시 준비 중</p>
-          </span>
-        </div>
-        <button class="close-btn" type="button" aria-label="Close">×</button>
+      <div class="dialog-header">
+        <div class="dialog-identity"><img src="./assets/kkirikkiri/kkirikkiri_icon_512.png" alt="" width="57" height="57" /><div><h3 id="kkiri-dialog-title">끼리끼리</h3><p data-ko="가치관 기반 소셜 서비스 · 출시 준비 중" data-en="Social app · In development">가치관 기반 소셜 서비스 · 출시 준비 중</p></div></div>
+        <button type="button" class="close-modal" data-close aria-label="Close dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 5 19 19M19 5 5 19" /></svg></button>
       </div>
-
-      <div class="detail-hero">
-        <div class="detail-copy-card">
-          <h4 data-ko="친구와 같은 질문에 답하며 서로의 생각을 알아가는 서비스" data-en="A social service for discovering how friends think">
-            친구와 같은 질문에 답하며 서로의 생각을 알아가는 서비스
-          </h4>
-          <p data-ko="끼리끼리는 데릭투스카이(Derrick2Sky)가 개발·운영하는 가치관 기반 소셜 서비스입니다. 처음에는 기본 가치관 질문으로 시작하고, 이후 매일 공개되는 질문에 답하면서 친구와의 공통점과 차이점이 계속 쌓입니다."
-             data-en="KkiriKkiri is a value-compatibility social service developed and operated by Derrick2Sky. Users begin with core value questions, then continue with daily prompts that gradually reveal similarities and differences with friends.">
-            끼리끼리는 데릭투스카이(Derrick2Sky)가 개발·운영하는 가치관 기반 소셜 서비스입니다. 처음에는 기본 가치관 질문으로 시작하고, 이후 매일 공개되는 질문에 답하면서 친구와의 공통점과 차이점이 계속 쌓입니다.
-          </p>
-          <p data-ko="궁합은 한 번의 테스트 결과로 고정되지 않고, 두 사람이 함께 답한 최신 질문을 반영하면서 계속 변하도록 설계하고 있습니다. 월간 리포트에서는 친구와 잘 맞는 주제와 다른 주제, 대표 답변, 대화에 도움이 되는 내용을 보여주는 방향으로 개발 중입니다."
-             data-en="Compatibility is designed to evolve rather than remain a one-time test result, using recent questions both friends have answered. Monthly reports are being developed to highlight aligned topics, differences, representative answers, and practical communication insights.">
-            궁합은 한 번의 테스트 결과로 고정되지 않고, 두 사람이 함께 답한 최신 질문을 반영하면서 계속 변하도록 설계하고 있습니다. 월간 리포트에서는 친구와 잘 맞는 주제와 다른 주제, 대표 답변, 대화에 도움이 되는 내용을 보여주는 방향으로 개발 중입니다.
-          </p>
+      <div class="dialog-topline"><h4 data-ko="앱 화면 미리보기" data-en="App screenshots">앱 화면 미리보기</h4><span class="slide-count" aria-live="polite">01 / 04</span></div>
+      <div class="stage kkiri-stage">
+        <button class="stage-arrow prev" type="button" data-direction="-1" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg></button>
+        <figure><img class="stage-image" src="./assets/kkirikkiri/1.png" alt="끼리끼리 screenshot 1" width="941" height="1672" /></figure>
+        <button class="stage-arrow next" type="button" data-direction="1" aria-label="Next screenshot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg></button>
+      </div>
+      <div class="thumb-nav" role="group" aria-label="끼리끼리 screenshot selection">
+        <button type="button" data-thumb="0" aria-label="Show screenshot 1" class="active" aria-pressed="true"><img src="./assets/kkirikkiri/1.png" alt="" width="941" height="1672" loading="lazy" /></button>
+        <button type="button" data-thumb="1" aria-label="Show screenshot 2" aria-pressed="false"><img src="./assets/kkirikkiri/2.png" alt="" width="941" height="1672" loading="lazy" /></button>
+        <button type="button" data-thumb="2" aria-label="Show screenshot 3" aria-pressed="false"><img src="./assets/kkirikkiri/3.png" alt="" width="941" height="1672" loading="lazy" /></button>
+        <button type="button" data-thumb="3" aria-label="Show screenshot 4" aria-pressed="false"><img src="./assets/kkirikkiri/4.png" alt="" width="941" height="1672" loading="lazy" /></button>
+      </div>
+      <div class="detail-columns">
+        <div>
+          <h4 data-ko="친구와 같은 질문, 다른 생각을 발견하는 즐거움" data-en="Discover how your friends think">친구와 같은 질문, 다른 생각을 발견하는 즐거움</h4>
+          <p data-ko="끼리끼리는 친구와 같은 질문에 답하며 서로의 가치관과 생각을 알아가는 소셜 서비스입니다. 기본 가치관 질문에서 시작해 매일 새로운 질문에 답하면서 서로의 공통점과 차이점이 쌓입니다." data-en="KkiriKkiri is a social service where friends answer the same questions and discover their shared values and differences over time.">끼리끼리는 친구와 같은 질문에 답하며 서로의 가치관과 생각을 알아가는 소셜 서비스입니다. 기본 가치관 질문에서 시작해 매일 새로운 질문에 답하면서 서로의 공통점과 차이점이 쌓입니다.</p>
+          <p data-ko="친구 궁합은 최근 답변을 반영해 계속 변하며, 리포트를 통해 각자의 생각을 더 풍부하게 이해하도록 설계하고 있습니다." data-en="Compatibility evolves as new answers come in, with reports designed to make these differences and similarities easier to understand.">친구 궁합은 최근 답변을 반영해 계속 변하며, 리포트를 통해 각자의 생각을 더 풍부하게 이해하도록 설계하고 있습니다.</p>
         </div>
-
-        <div class="modal-preview placeholder">
-          <div class="coming-empty">
-            <div>
-              <strong data-ko="출시 준비 중" data-en="Coming soon">출시 준비 중</strong>
-              <span data-ko="정식 UI 스크린샷은 출시 준비 후 공개됩니다." data-en="Official UI screenshots will be published as release preparation progresses.">정식 UI 스크린샷은 출시 준비 후 공개됩니다.</span>
-            </div>
+        <div>
+          <h4 data-ko="주요 기능" data-en="Key features">주요 기능</h4>
+          <div class="features">
+            <div class="feature"><strong data-ko="기본 가치관" data-en="Core values">기본 가치관</strong><span data-ko="기본 질문을 통해 친구 궁합의 초기 기준 설정" data-en="Build an initial compatibility baseline through core questions">기본 질문을 통해 친구 궁합의 초기 기준 설정</span></div>
+            <div class="feature"><strong data-ko="매일 하나의 질문" data-en="A question a day">매일 하나의 질문</strong><span data-ko="서로 답한 질문을 통해 계속 발견하는 공통점과 차이점" data-en="Discover similarities and differences through shared answers">서로 답한 질문을 통해 계속 발견하는 공통점과 차이점</span></div>
+            <div class="feature"><strong data-ko="궁합과 리포트" data-en="Compatibility and reports">궁합과 리포트</strong><span data-ko="누적된 답변으로 변화하는 궁합과 월간 분석 리포트" data-en="Evolving compatibility and monthly insights from shared answers">누적된 답변으로 변화하는 궁합과 월간 분석 리포트</span></div>
           </div>
         </div>
       </div>
-
-      <div class="screenshot-section">
-        <div class="screenshot-head">
-          <h4 data-ko="앱 화면" data-en="App screens">앱 화면</h4>
-          <span data-ko="현재 개발 중" data-en="In development">현재 개발 중</span>
-        </div>
-        <div class="screenshots">
-          <div class="screen-card placeholder"><strong data-ko="출시 준비 중" data-en="Coming soon">출시 준비 중</strong></div>
-          <div class="screen-card placeholder"><strong data-ko="출시 준비 중" data-en="Coming soon">출시 준비 중</strong></div>
-          <div class="screen-card placeholder"><strong data-ko="출시 준비 중" data-en="Coming soon">출시 준비 중</strong></div>
-          <div class="screen-card placeholder"><strong data-ko="출시 준비 중" data-en="Coming soon">출시 준비 중</strong></div>
-        </div>
-      </div>
-
-      <div class="feature-list">
-        <div class="feature-row">
-          <strong data-ko="기본 가치관" data-en="Core values">기본 가치관</strong>
-          <span data-ko="가입 후 기본 질문을 통해 친구 궁합의 초기 기준을 만듭니다." data-en="Core questions establish an initial basis for compatibility with friends.">가입 후 기본 질문을 통해 친구 궁합의 초기 기준을 만듭니다.</span>
-        </div>
-        <div class="feature-row">
-          <strong data-ko="매일 질문" data-en="Daily questions">매일 질문</strong>
-          <span data-ko="매일 하나의 새로운 질문에 답하고, 친구가 같은 질문에 답하면 두 사람의 궁합에 반영됩니다." data-en="A new prompt is answered each day, and shared answers contribute to compatibility once both friends have responded.">매일 하나의 새로운 질문에 답하고, 친구가 같은 질문에 답하면 두 사람의 궁합에 반영됩니다.</span>
-        </div>
-        <div class="feature-row">
-          <strong data-ko="변화하는 궁합" data-en="Evolving compatibility">변화하는 궁합</strong>
-          <span data-ko="공통 답변이 쌓일수록 최근 답변의 비중이 커져 현재의 관계를 더 잘 반영하도록 설계합니다." data-en="As shared answers accumulate, recent responses carry more weight so the score better reflects the current relationship.">공통 답변이 쌓일수록 최근 답변의 비중이 커져 현재의 관계를 더 잘 반영하도록 설계합니다.</span>
-        </div>
-        <div class="feature-row">
-          <strong data-ko="월간 리포트" data-en="Monthly report">월간 리포트</strong>
-          <span data-ko="친구와의 공통점·차이점, 대표 답변과 커뮤니케이션에 도움이 되는 내용을 정리하는 기능을 준비하고 있습니다." data-en="A planned report summarizes similarities, differences, representative answers, and practical communication insights.">친구와의 공통점·차이점, 대표 답변과 커뮤니케이션에 도움이 되는 내용을 정리하는 기능을 준비하고 있습니다.</span>
-        </div>
-      </div>
-
-      <section class="store-section" aria-label="Store links">
-        <h4 data-ko="스토어 링크" data-en="Store links">스토어 링크</h4>
-        <p data-ko="끼리끼리는 현재 출시 준비 중이며, 정식 출시 후 스토어 링크를 공개할 예정입니다." data-en="KkiriKkiri is currently preparing for release. Store links will be added when the app launches.">끼리끼리는 현재 출시 준비 중이며, 정식 출시 후 스토어 링크를 공개할 예정입니다.</p>
-        <div class="store-links">
-          <div class="store-link disabled"><span><small>COMING SOON</small><strong>Google Play</strong></span><span class="arrow">—</span></div>
-          <div class="store-link disabled"><span><small>COMING SOON</small><strong>App Store</strong></span><span class="arrow">—</span></div>
+      <section class="stores" aria-label="Store links">
+        <h4 data-ko="출시 준비 중" data-en="Coming soon">출시 준비 중</h4>
+        <p data-ko="끼리끼리는 정식 출시를 준비하고 있으며, 출시 후 스토어 링크를 공개할 예정입니다." data-en="KkiriKkiri is in development. Store links will be added after launch.">끼리끼리는 정식 출시를 준비하고 있으며, 출시 후 스토어 링크를 공개할 예정입니다.</p>
+        <div class="store-actions">
+          <div class="store-button disabled"><span><small>COMING SOON</small><strong>Google Play</strong></span><span class="out">—</span></div>
+          <div class="store-button disabled"><span><small>COMING SOON</small><strong>App Store</strong></span><span class="out">—</span></div>
         </div>
       </section>
     </div>
   </dialog>
 
   <script>
-    const langButtons = document.querySelectorAll("[data-lang]");
-    const translatedNodes = document.querySelectorAll("[data-ko][data-en]");
+    (() => {
+      const images = {
+        keycap: [1, 2, 3, 4].map(n => `./assets/keycap-keyring/${n}.png`),
+        kkiri: [1, 2, 3, 4].map(n => `./assets/kkirikkiri/${n}.png`)
+      };
+      const names = { keycap: 'KeyCap KeyRing', kkiri: '끼리끼리' };
+      const langButtons = document.querySelectorAll('[data-lang]');
+      const translationNodes = document.querySelectorAll('[data-ko][data-en]');
+      const state = { keycap: 0, kkiri: 0 };
 
-    function setLanguage(lang) {
-      document.documentElement.lang = lang;
-      translatedNodes.forEach((node) => {
-        const value = node.dataset[lang];
-        if (value !== undefined) node.innerHTML = value;
+      function setLanguage(lang) {
+        if (lang !== 'ko' && lang !== 'en') lang = 'ko';
+        document.documentElement.lang = lang;
+        translationNodes.forEach(node => {
+          const text = node.getAttribute('data-' + lang);
+          // Only the studio heading intentionally contains a line break.
+          if (node.matches('.about-story h3')) {
+            const parts = text.split('<br>');
+            node.replaceChildren();
+            parts.forEach((part, i) => {
+              if (i) node.appendChild(document.createElement('br'));
+              node.appendChild(document.createTextNode(part));
+            });
+          } else {
+            node.textContent = text;
+          }
+        });
+        langButtons.forEach(button => {
+          const active = button.dataset.lang === lang;
+          button.classList.toggle('active', active);
+          button.setAttribute('aria-pressed', String(active));
+        });
+        try { localStorage.setItem('d2s-language', lang); } catch (e) { /* storage unavailable */ }
+      }
+
+      function setSlide(dialog, index) {
+        const id = dialog.dataset.gallery;
+        const slides = images[id];
+        const current = ((index % slides.length) + slides.length) % slides.length;
+        state[id] = current;
+        const main = dialog.querySelector('.stage-image');
+        main.src = slides[current];
+        main.alt = `${names[id]} screenshot ${current + 1}`;
+        dialog.querySelector('.slide-count').textContent = `${String(current + 1).padStart(2, '0')} / 04`;
+        dialog.querySelectorAll('[data-thumb]').forEach(button => {
+          const selected = Number(button.dataset.thumb) === current;
+          button.classList.toggle('active', selected);
+          button.setAttribute('aria-pressed', String(selected));
+        });
+      }
+
+      document.querySelectorAll('[data-open]').forEach(button => {
+        button.addEventListener('click', () => {
+          const id = button.dataset.open;
+          const dialog = document.getElementById(`${id}-dialog`);
+          if (!dialog) return;
+          setSlide(dialog, Number(button.dataset.slide) || 0);
+          dialog.showModal();
+          dialog.scrollTop = 0;
+        });
       });
-      langButtons.forEach((button) => {
-        button.classList.toggle("active", button.dataset.lang === lang);
+      document.querySelectorAll('dialog[data-gallery]').forEach(dialog => {
+        dialog.querySelector('[data-close]').addEventListener('click', () => dialog.close());
+        dialog.querySelectorAll('[data-direction]').forEach(button => {
+          button.addEventListener('click', () => setSlide(dialog, state[dialog.dataset.gallery] + Number(button.dataset.direction)));
+        });
+        dialog.querySelectorAll('[data-thumb]').forEach(button => {
+          button.addEventListener('click', () => setSlide(dialog, Number(button.dataset.thumb)));
+        });
+        dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
+        dialog.addEventListener('keydown', e => {
+          if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+          e.preventDefault();
+          setSlide(dialog, state[dialog.dataset.gallery] + (e.key === 'ArrowRight' ? 1 : -1));
+        });
       });
-      localStorage.setItem("d2s-language", lang);
-    }
-
-    langButtons.forEach((button) => {
-      button.addEventListener("click", () => setLanguage(button.dataset.lang));
-    });
-
-    document.querySelectorAll("[data-dialog]").forEach((card) => {
-      card.addEventListener("click", () => {
-        const dialog = document.getElementById(card.dataset.dialog);
-        if (dialog) dialog.showModal();
-      });
-    });
-
-    document.querySelectorAll("dialog").forEach((dialog) => {
-      const closeButton = dialog.querySelector(".close-btn");
-      closeButton?.addEventListener("click", () => dialog.close());
-      dialog.addEventListener("click", (event) => {
-        if (event.target === dialog) dialog.close();
-      });
-    });
-
-    const savedLanguage = localStorage.getItem("d2s-language");
-    setLanguage(savedLanguage === "en" ? "en" : "ko");
+      langButtons.forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.lang)));
+      let preferred = 'ko';
+      try { preferred = localStorage.getItem('d2s-language') === 'en' ? 'en' : 'ko'; } catch (e) { /* storage unavailable */ }
+      setLanguage(preferred);
+    })();
   </script>
 </body>
 </html>
